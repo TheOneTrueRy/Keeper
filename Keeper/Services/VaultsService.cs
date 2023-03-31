@@ -15,6 +15,7 @@ namespace Keeper.Services
       return vault;
     }
 
+
     internal Vault GetOneVault(int id, string userId)
     {
       Vault vault = _repo.GetOneVault(id);
@@ -42,6 +43,20 @@ namespace Keeper.Services
       original.isPrivate = vaultData.isPrivate != null ? vaultData.isPrivate : original.isPrivate;
       _repo.UpdateVault(original);
       return original;
+    }
+    internal string DeleteVault(int id, string userId)
+    {
+      Vault vault = this.GetOneVault(id, userId);
+      if (userId != vault.CreatorId)
+      {
+        throw new Exception("That's not your vault!");
+      }
+      bool result = _repo.DeleteVault(id);
+      if (!result)
+      {
+        throw new Exception($"Something went wrong trying to delete the {vault.Name} vault at the {vault.Id} Id.");
+      }
+      return $"Successfully deleted the {vault.Name} vault!";
     }
   }
 }

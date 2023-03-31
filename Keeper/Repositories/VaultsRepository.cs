@@ -24,6 +24,7 @@ namespace Keeper.Repositories
       return vaultData;
     }
 
+
     internal Vault GetOneVault(int id)
     {
       string sql = @"
@@ -55,6 +56,14 @@ namespace Keeper.Repositories
       ";
       int rows = _db.Execute(sql, original);
       return rows;
+    }
+    internal bool DeleteVault(int id)
+    {
+      string sql = @"
+      DELETE FROM vaults WHERE id = @id;
+      ";
+      int rows = _db.Execute(sql, new { id });
+      return rows == 1;
     }
   }
 }
