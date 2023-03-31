@@ -12,5 +12,70 @@ namespace Keeper.Controllers
       this.keepsService = keepsService;
       _auth = auth;
     }
+
+    [HttpPost]
+    [Authorize]
+    public async Task<ActionResult<Keep>> CreateKeep([FromBody] Keep keepData)
+    {
+      try
+      {
+        Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+        keepData.CreatorId = userInfo.Id;
+        Keep keep = keepsService.CreateKeep(keepData);
+        keep.Creator = userInfo;
+        return Ok(keep);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet]
+    public ActionResult<List<Keep>> GetAllKeeps()
+    {
+      try
+      {
+        List<Keep> keeps = keepsService.GetAllKeeps();
+        return Ok(keeps);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Keep>> GetOneKeep(int id)
+    {
+      try
+      {
+        Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+        Keep keep = keepsService.GetOneKeep(id, userInfo.Id);
+        return Ok(keep);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
+    [HttpPut("{id}")]
+    [Authorize]
+    public async Task<ActionResult<Keep>> UpdateKeep([FromBody] Keep keepData, int id)
+    {
+      try
+      {
+        Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+        keepData.CreatorId = userInfo.Id;
+        keepData.Id = id;
+        Keep keep = keepsService.UpdateKeep(keepData);
+        return Ok(keep);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
   }
 }
