@@ -28,5 +28,20 @@ namespace Keeper.Services
       }
       return vault;
     }
+
+    internal Vault UpdateVault(Vault vaultData)
+    {
+      Vault original = this.GetOneVault(vaultData.Id, vaultData.CreatorId);
+      if (original.CreatorId != vaultData.CreatorId)
+      {
+        throw new Exception("That's not your vault to edit!");
+      }
+      original.Name = vaultData.Name != null ? vaultData.Name : original.Name;
+      original.Description = vaultData.Description != null ? vaultData.Description : original.Description;
+      original.Img = vaultData.Img != null ? vaultData.Img : original.Img;
+      original.isPrivate = vaultData.isPrivate != null ? vaultData.isPrivate : original.isPrivate;
+      _repo.UpdateVault(original);
+      return original;
+    }
   }
 }
