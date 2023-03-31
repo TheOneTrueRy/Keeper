@@ -51,7 +51,7 @@ namespace Keeper.Controllers
       try
       {
         Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
-        Keep keep = keepsService.GetOneKeep(id, userInfo.Id);
+        Keep keep = keepsService.GetOneKeep(id, userInfo?.Id);
         return Ok(keep);
       }
       catch (Exception e)
