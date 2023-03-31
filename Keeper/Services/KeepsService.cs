@@ -15,6 +15,7 @@ namespace Keeper.Services
       return keep;
     }
 
+
     internal List<Keep> GetAllKeeps()
     {
       List<Keep> keeps = _repo.GetAllKeeps();
@@ -44,6 +45,20 @@ namespace Keeper.Services
       original.Img = keepData.Img != null ? keepData.Img : original.Img;
       _repo.UpdateKeep(original);
       return original;
+    }
+    internal string DeleteKeep(int id, string userId)
+    {
+      Keep keep = this.GetOneKeep(id, userId);
+      if (keep.CreatorId != userId)
+      {
+        throw new Exception("Hey, that's not your Keep!");
+      }
+      bool result = _repo.DeleteKeep(id);
+      if (!result)
+      {
+        throw new Exception($"Something went wrong trying to delete the {keep.Name} Keep at the {keep.Id} Id. Dang.");
+      }
+      return $"Successfully deleted the {keep.Name} keep!";
     }
   }
 }
