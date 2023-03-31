@@ -40,6 +40,10 @@ namespace Keeper.Services
     internal Keep UpdateKeep(Keep keepData)
     {
       Keep original = this.GetOneKeep(keepData.Id, keepData.CreatorId);
+      if (original.CreatorId != keepData.CreatorId)
+      {
+        throw new Exception("That's not your keep to update!");
+      }
       original.Name = keepData.Name != null ? keepData.Name : original.Name;
       original.Description = keepData.Description != null ? keepData.Description : original.Description;
       original.Img = keepData.Img != null ? keepData.Img : original.Img;
