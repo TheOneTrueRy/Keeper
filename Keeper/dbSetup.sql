@@ -9,8 +9,41 @@ CREATE TABLE IF NOT EXISTS accounts(
   coverImage VARCHAR(255) COMMENT 'User Cover Picture'
 ) default charset utf8mb4 COMMENT '';
 
-DROP TABLE accounts;
 
-SELECT
-*
-FROM accounts;
+-- SECTION -- *Keeps*
+CREATE TABLE IF NOT EXISTS keeps(
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  creatorId VARCHAR(255) NOT NULL,
+  name VARCHAR(50) NOT NULL,
+  description VARCHAR(500) NOT NULL DEFAULT 'No Description Given',
+  img VARCHAR(700) NOT NULL,
+  views INT NOT NULL DEFAULT 0,
+
+  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+) default charset utf8mb4 COMMENT '';
+
+
+-- SECTION -- *Vaults*
+CREATE TABLE IF NOT EXISTS vaults(
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  creatorId VARCHAR(255) NOT NULL,
+  name VARCHAR(60) NOT NULL,
+  description VARCHAR(1000) NOT NULL DEFAULT 'No Description Given',
+  img VARCHAR(700) NOT NULL,
+  isPrivate BOOLEAN NOT NULL DEFAULT false,
+
+  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+) default charset utf8mb4 COMMENT '';
+
+
+-- SECTION -- *VaultKeeps*
+CREATE TABLE IF NOT EXISTS vaultkeeps(
+  id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  creatorId VARCHAR(255) NOT NULL,
+  vaultId INT NOT NULL,
+  keepId INT NOT NULL,
+
+  FOREIGN KEY (creatorID) REFERENCES accounts(id) ON DELETE CASCADE,
+  FOREIGN KEY (vaultId) REFERENCES vaults(id) ON DELETE CASCADE,
+  FOREIGN KEY (keepId) REFERENCES keeps(id) ON DELETE CASCADE
+) default charset utf8mb4 COMMENT '';
