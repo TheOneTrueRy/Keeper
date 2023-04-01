@@ -58,5 +58,16 @@ namespace Keeper.Services
       }
       return $"Successfully deleted the {vault.Name} vault!";
     }
+
+    internal List<VaultedKeep> GetKeepsInVault(int vaultId, string userId)
+    {
+      Vault vault = this.GetOneVault(vaultId, userId);
+      if (vault.isPrivate == true && vault.CreatorId != userId)
+      {
+        throw new Exception("No vault found at that Id.");
+      }
+      List<VaultedKeep> vaultedKeeps = _repo.GetKeepsInVault(vaultId);
+      return vaultedKeeps;
+    }
   }
 }

@@ -65,5 +65,26 @@ namespace Keeper.Repositories
       int rows = _db.Execute(sql, new { id });
       return rows == 1;
     }
+
+    internal List<VaultedKeep> GetKeepsInVault(int vaultId)
+    {
+      string sql = @"
+      SELECT
+      k.*,
+      vk.*,
+      creator.*
+      FROM vaultkeeps vk
+      JOIN keeps k ON  vk.keepId = k.id
+      JOIN accounts creator ON k.creatorId = creator.id
+      WHERE vk.vaultId = @vaultId;
+      ";
+      List<VaultedKeep> vaultedKeeps = _db.Query<VaultedKeep, VaultKeep, Profile, VaultedKeep>(sql, (vaultedKeep, vaultKeep, creator) =>
+      {
+        vaultedKeep.VaultKeepId = vaultKeep.Id;
+        vaultedKeep.Creator = creator;
+        return vaultedKeep;
+      }, new { vaultId }).ToList();
+      return vaultedKeeps;
+    }
   }
 }

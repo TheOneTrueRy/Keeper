@@ -46,6 +46,21 @@ namespace Keeper.Controllers
       }
     }
 
+    [HttpGet("{id}/keeps")]
+    public async Task<ActionResult<List<VaultedKeep>>> GetKeepsInVault(int id)
+    {
+      try
+      {
+        Account userInfo = await _auth.GetUserInfoAsync<Account>(HttpContext);
+        List<VaultedKeep> vaultedKeeps = vaultsService.GetKeepsInVault(id, userInfo?.Id);
+        return Ok(vaultedKeeps);
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
+
     [HttpPut("{id}")]
     [Authorize]
     public async Task<ActionResult<Vault>> UpdateVault([FromBody] Vault vaultData, int id)

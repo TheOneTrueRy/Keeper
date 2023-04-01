@@ -14,6 +14,6 @@ namespace Keeper.Models
 
   public class VaultedKeep : Keep
   {
-    public int VaultkeepId { get; set; }
+    public int VaultKeepId { get; set; }
   }
 }
