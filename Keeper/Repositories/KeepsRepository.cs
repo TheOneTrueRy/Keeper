@@ -29,9 +29,12 @@ namespace Keeper.Repositories
       string sql = @"
       SELECT
       keep.*,
+      COUNT(vk.id) AS kept,
       acct.*
       FROM keeps keep
-      JOIN accounts acct ON keep.creatorId = acct.id;
+      LEFT JOIN vaultkeeps vk ON vk.keepId = keep.id
+      JOIN accounts acct ON keep.creatorId = acct.id
+      GROUP BY keep.id;
       ";
       List<Keep> keeps = _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
       {
@@ -46,10 +49,13 @@ namespace Keeper.Repositories
       string sql = @"
       SELECT
       keep.*,
+      COUNT(vk.id) AS kept,
       acct.*
       FROM keeps keep
+      LEFT JOIN vaultkeeps vk ON vk.keepId = keep.id
       JOIN accounts acct on keep.creatorId = acct.id
-      WHERE keep.id = @id;
+      WHERE keep.id = @id
+      GROUP BY keep.id;
       ";
       Keep keep = _db.Query<Keep, Profile, Keep>(sql, (keep, profile) =>
       {

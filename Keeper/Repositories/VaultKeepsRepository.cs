@@ -22,5 +22,26 @@ namespace Keeper.Repositories
       vaultKeepData.Id = id;
       return vaultKeepData;
     }
+
+    internal bool DeleteVaultKeep(int id)
+    {
+      string sql = @"
+      DELETE FROM vaultkeeps WHERE id = @id
+      ";
+      int rows = _db.Execute(sql, new { id });
+      return rows == 1;
+    }
+
+    internal VaultKeep GetOneVaultKeep(int id)
+    {
+      string sql = @"
+      SELECT
+      *
+      FROM vaultkeeps
+      WHERE id = @id;
+      ";
+      VaultKeep vaultKeep = _db.Query<VaultKeep>(sql, new { id }).FirstOrDefault();
+      return vaultKeep;
+    }
   }
 }
