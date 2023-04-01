@@ -38,10 +38,23 @@ public class AccountsRepository
             UPDATE accounts
             SET 
               name = @Name,
-              picture = @Picture
+              picture = @Picture,
+              coverImg = @CoverImg
             WHERE id = @Id;";
     _db.Execute(sql, update);
     return update;
+  }
+
+  internal List<Vault> GetMyVaults(string userId)
+  {
+    string sql = @"
+      SELECT
+      *
+      FROM vaults
+      WHERE creatorId = @userId;
+      ";
+    List<Vault> vaults = _db.Query<Vault>(sql, new { userId }).ToList();
+    return vaults;
   }
 }
 
