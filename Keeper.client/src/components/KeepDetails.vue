@@ -4,8 +4,8 @@
       <div class="col-6 g-0 bg-cover h-100" :style="{ backgroundImage: `url(${keep.img})` }">
 
       </div>
-      <div class="col-6 h-100">
-        <div class="row flex-md-row flex-column h-100">
+      <div class="col-6 h-100 d-flex">
+        <div class="row h-100">
           <div class="col-12 d-flex justify-content-center align-items-center py-2">
             <span><i class="mdi mdi-eye"></i> {{ keep.views }}</span>
             <span class="ms-3"><i class="mdi mdi-chess-rook"></i> {{ keep.kept }}</span>
@@ -14,9 +14,8 @@
             <span class="fs-2 text-center">{{ keep.name }}</span>
             <span class="pt-3">{{ keep.description }}</span>
           </div>
-          <div class="col-6 d-flex justify-content-around align-items-center">
-            <span>Save to:</span>
-            <div class="btn-group" v-if="account.id">
+          <div class="col-6 d-flex justify-content-start align-items-center">
+            <div class="btn-group ps-2" v-if="account.id">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 VAULTS
@@ -38,7 +37,7 @@
               <img :src="keep.creator.picture" :alt="keep.creator.name"
                 class="creator-pfp elevation-1 border border-dark">
             </router-link>
-            <span>{{ keep.creator.name }}</span>
+            <span class="clip-text">{{ keep.creator.name }}</span>
           </div>
         </div>
       </div>
@@ -74,6 +73,10 @@ export default {
 
 
 <style lang="scss" scoped>
+#column-row-switcher {
+  flex-direction: column;
+}
+
 .keep-modal {
   height: 100vh;
   width: 100vw;
@@ -83,6 +86,10 @@ export default {
   .keep-modal {
     height: 70vh;
     width: 100%;
+  }
+
+  #column-row-switcher {
+    flex-direction: row;
   }
 }
 
