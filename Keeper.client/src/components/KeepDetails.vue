@@ -14,7 +14,8 @@
             <span class="fs-2 text-center">{{ keep.name }}</span>
             <span class="pt-3">{{ keep.description }}</span>
           </div>
-          <div class="col-6 d-flex justify-content-center align-items-center">
+          <div class="col-6 d-flex justify-content-around align-items-center">
+            <span>Save to:</span>
             <div class="btn-group" v-if="account.id">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -32,8 +33,12 @@
               </ul>
             </div>
           </div>
-          <div class="col-6">
-
+          <div class="col-6 d-flex align-items-center justify-content-around">
+            <router-link :to="{ name: 'Profile', params: { profileId: keep.creator.id } }" data-bs-dismiss="modal">
+              <img :src="keep.creator.picture" :alt="keep.creator.name"
+                class="creator-pfp elevation-1 border border-dark">
+            </router-link>
+            <span>{{ keep.creator.name }}</span>
           </div>
         </div>
       </div>
@@ -92,5 +97,11 @@ export default {
 
 .keep-body::-webkit-scrollbar {
   display: none;
+}
+
+.creator-pfp {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 </style>

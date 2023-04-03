@@ -3,9 +3,11 @@
     <div class="container-fluid elevation-3">
       <div class="row">
         <div class="col-md-2 col-4 d-flex align-items-center justify-content-center">
-          <button class="btn btn-dark">
-            <span>Home <i class="mdi mdi-home d-none d-md-inline"></i></span>
-          </button>
+          <router-link :to="{ name: 'Home' }">
+            <button class="btn btn-dark">
+              <span>Home <i class="mdi mdi-home d-none d-md-inline"></i></span>
+            </button>
+          </router-link>
         </div>
         <div class="col-md-3 col-4 d-flex align-items-center justify-content-center">
           <div class="dropdown" v-if="account.id">
