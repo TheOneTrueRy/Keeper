@@ -34,12 +34,27 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from './AppState'
 import Login from "./components/Login.vue"
+import Pop from "./utils/Pop.js"
+import { vaultsService } from "./services/VaultsService.js"
 
 export default {
   setup() {
+
+    async function getMyVaults() {
+      try {
+        await vaultsService.getMyVaults()
+      } catch (error) {
+        Pop.error(error.message, '[Getting My Vaults]')
+      }
+    }
+
+    onMounted(() => {
+      getMyVaults()
+    })
+
     return {
       appState: computed(() => AppState)
     }
