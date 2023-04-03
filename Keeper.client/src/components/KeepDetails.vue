@@ -57,6 +57,7 @@ export default {
       async vaultAKeep(vaultId, keepId) {
         try {
           await vaultKeepsService.vaultAKeep(vaultId, keepId)
+          Pop.success('Keep successfully added to your vault!')
         } catch (error) {
           Pop.error(error.message, '[Vaulting A Keep]')
         }
