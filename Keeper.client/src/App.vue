@@ -1,6 +1,6 @@
 <template>
-  <header>
-    <div class="container-fluid sticky-md-top fixed-bottom elevation-3">
+  <header class=" sticky-md-top fixed-bottom  bg-white">
+    <div class="container-fluid elevation-3">
       <div class="row">
         <div class="col-md-2 col-4 d-flex align-items-center justify-content-center">
           <button class="btn btn-dark">

@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid">
     <div class="bricks">
-      <div v-for="k in keeps">
+      <div v-for="k in keeps" class="">
         <KeepCard :keep="k" />
       </div>
     </div>
@@ -12,9 +12,25 @@
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
 import KeepCard from "../components/KeepCard.vue";
+import { onMounted } from "vue";
+import Pop from "../utils/Pop.js";
+import { keepsService } from "../services/KeepsService.js";
 
 export default {
   setup() {
+
+    async function getAllKeeps() {
+      try {
+        await keepsService.getAllKeeps()
+      } catch (error) {
+        Pop.error(error.message, '[Getting All Keeps]')
+      }
+    }
+
+    onMounted(() => {
+      getAllKeeps()
+    })
+
     return {
       keeps: computed(() => AppState.keeps)
     };
@@ -37,7 +53,7 @@ export default {
     columns: 4;
 
     &>div {
-      margin-top: 2em;
+      margin-top: 1em;
     }
   }
 }
