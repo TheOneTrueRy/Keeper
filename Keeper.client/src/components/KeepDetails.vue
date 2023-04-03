@@ -5,7 +5,7 @@
 
       </div>
       <div class="col-6 h-100">
-        <div class="row h-100">
+        <div class="row flex-md-row flex-column h-100">
           <div class="col-12 d-flex justify-content-center align-items-center py-2">
             <span><i class="mdi mdi-eye"></i> {{ keep.views }}</span>
             <span class="ms-3"><i class="mdi mdi-chess-rook"></i> {{ keep.kept }}</span>
