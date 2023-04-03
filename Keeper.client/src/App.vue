@@ -8,7 +8,7 @@
           </button>
         </div>
         <div class="col-md-3 col-4 d-flex align-items-center justify-content-center">
-          <div class="dropdown">
+          <div class="dropdown" v-if="account.id">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">
               Create
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { AppState } from './AppState'
 import Login from "./components/Login.vue"
 import Pop from "./utils/Pop.js"
@@ -51,12 +51,15 @@ export default {
       }
     }
 
-    onMounted(() => {
-      getMyVaults()
+    watchEffect(() => {
+      if (AppState.account.id) {
+        getMyVaults()
+      }
     })
 
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+      account: computed(() => AppState.account)
     }
   },
   components: { Login }

@@ -15,17 +15,20 @@
             <span class="pt-3">{{ keep.description }}</span>
           </div>
           <div class="col-6 d-flex justify-content-center align-items-center">
-            <div class="btn-group">
+            <div class="btn-group" v-if="account.id">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 VAULTS
               </button>
-              <ul class="dropdown-menu">
-                <li class="selectable">
+              <ul v-if="myVaults.length > 0" class="dropdown-menu">
+                <li v-for="v in myVaults" class="selectable" @click="vaultAKeep(v.id, keep.id)">
                   <span>
-
+                    {{ v.name }}
                   </span>
                 </li>
+              </ul>
+              <ul v-else>
+                <li><span>No Vaults Created!</span></li>
               </ul>
             </div>
           </div>
@@ -42,12 +45,22 @@
 <script>
 import { computed } from "vue";
 import { AppState } from "../AppState.js";
+import Pop from "../utils/Pop.js";
+import { vaultKeepsService } from "../services/VaultKeepsService.js";
 
 export default {
   setup() {
     return {
       keep: computed(() => AppState.keep),
-      myVaults: computed(() => AppState.myVaults)
+      myVaults: computed(() => AppState.myVaults),
+      account: computed(() => AppState.account),
+      async vaultAKeep(vaultId, keepId) {
+        try {
+          await vaultKeepsService.vaultAKeep(vaultId, keepId)
+        } catch (error) {
+          Pop.error(error.message, '[Vaulting A Keep]')
+        }
+      }
     }
   }
 }
