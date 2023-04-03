@@ -6,7 +6,7 @@
 <script>
 export default {
   props: {
-    keep: { type: Object, required: True }
+    keep: { type: Object, required: true }
   },
   setup() {
     return {}
