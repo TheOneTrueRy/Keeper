@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="container-fluid sticky-md-top fixed-bottom">
+    <div class="container-fluid sticky-md-top fixed-bottom elevation-3">
       <div class="row">
         <div class="col-md-2 col-4 d-flex align-items-center justify-content-center">
           <button class="btn btn-dark">
@@ -19,7 +19,7 @@
             </ul>
           </div>
         </div>
-        <div class="col-2 d-none d-md-flex align-items-center justify-content-center">
+        <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1">
           <img src="keep-icon.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
         </div>
         <div class="col-md-2 col-4 offset-md-3 d-flex align-items-center justify-content-center">
