@@ -58,6 +58,7 @@ import { profilesService } from "../services/ProfilesService.js";
 import KeepCard from "../components/KeepCard.vue";
 import VaultCard from "../components/VaultCard.vue";
 import Modal from "../components/Modal.vue";
+import { vaultsService } from "../services/VaultsService.js";
 
 export default {
   setup() {
@@ -69,9 +70,17 @@ export default {
         Pop.error(error.message, "[Getting Users Keeps]");
       }
     }
+    async function getMyVaults() {
+      try {
+        await vaultsService.getMyVaults()
+      } catch (error) {
+        Pop.error(error.message, '[Getting My Vaults]')
+      }
+    }
     watchEffect(() => {
       if (AppState.account.id) {
         getUsersKeeps(AppState.account.id)
+        getMyVaults()
       }
     });
     return {

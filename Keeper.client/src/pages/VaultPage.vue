@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div v-if="vault" class="container-fluid">
     <div class="row">
       <div class="col-6 offset-3 p-2">
         <div class="rounded vault-bg d-flex align-items-center justify-content-end flex-column pb-2 text-light"
@@ -11,8 +11,14 @@
     </div>
     <div v-if="account.id == vault.creator.id" class="row">
       <div class="col-6 offset-3 px-2">
-        <div class="w-100 d-flex align-items-center justify-content-end">
-          <button class="btn btn-danger">
+        <div class="w-100 d-flex align-items-center justify-content-between">
+          <button v-if="vault.isPrivate" class="btn btn-dark" @click="changePrivacy()">
+            <span>Make Public <i class="mdi mdi-lock-open"></i></span>
+          </button>
+          <button v-else class="btn btn-dark" @click="changePrivacy()">
+            <span>Make Private <i class="mdi mdi-lock"></i></span>
+          </button>
+          <button class="btn btn-danger" @click="deleteVault(vault.id)">
             <span>Delete <i class="mdi mdi-delete"></i></span>
           </button>
         </div>
@@ -77,7 +83,27 @@ export default {
     return {
       vault: computed(() => AppState.vault),
       account: computed(() => AppState.account),
-      keeps: computed(() => AppState.keeps)
+      keeps: computed(() => AppState.keeps),
+      async deleteVault(vaultId) {
+        try {
+          if (await Pop.confirm('Are you sure you want to PERMANENTLY delete this vault?')) {
+            await vaultsService.deleteVault(vaultId)
+            Pop.success('Successfully deleted your vault!')
+            router.push({ name: 'Home' })
+          }
+        } catch (error) {
+          Pop.error(error.message, '[Deleting Vault]')
+        }
+      },
+      async changePrivacy() {
+        try {
+          const vault = AppState.vault
+          vault.isPrivate = !vault.isPrivate
+          await vaultsService.updateVault(vault)
+        } catch (error) {
+          Pop.error(error.message, '[Changing Vault Privacy]')
+        }
+      }
     };
   },
   components: { KeepCard }
