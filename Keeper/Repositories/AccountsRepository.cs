@@ -32,17 +32,17 @@ public class AccountsRepository
     return newAccount;
   }
 
-  internal Account Edit(Account update)
+  internal int Edit(Account update)
   {
     string sql = @"
             UPDATE accounts
             SET 
               name = @Name,
               picture = @Picture,
-              coverImg = @CoverImg
+              coverImage = @CoverImage
             WHERE id = @Id;";
-    _db.Execute(sql, update);
-    return update;
+    int rows = _db.Execute(sql, update);
+    return rows;
   }
 
   internal List<Vault> GetMyVaults(string userId)

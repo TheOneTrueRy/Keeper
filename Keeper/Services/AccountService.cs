@@ -29,8 +29,9 @@ public class AccountService
     Account original = GetProfileByEmail(userEmail);
     original.Name = editData.Name.Length > 0 ? editData.Name : original.Name;
     original.Picture = editData.Picture.Length > 0 ? editData.Picture : original.Picture;
-    original.CoverImg = editData.CoverImg != null ? editData.CoverImg : original.CoverImg;
-    return _repo.Edit(original);
+    original.CoverImage = editData.CoverImage != null ? editData.CoverImage : original.CoverImage;
+    _repo.Edit(original);
+    return original;
   }
 
   internal List<Vault> GetMyVaults(string userId)

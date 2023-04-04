@@ -2,7 +2,7 @@
   <div v-if="profile" class="container-fluid">
     <div class="row">
       <div class="col-8 offset-2 p-3">
-        <img v-if="profile.coverImg" :src="profile.coverImg" :alt="`${profile.name}'s cover image.'`"
+        <img v-if="profile.coverImage" :src="profile.coverImage" :alt="`${profile.name}'s cover image.'`"
           :title="`${profile.name}'s cover image.'`" class="cover-image rounded border border-dark">
         <img v-else src="Public\broken-image.png" alt="" class="cover-image rounded border border-dark">
       </div>
@@ -52,7 +52,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
-import { onMounted } from "vue";
+import { watchEffect } from "vue";
 import Pop from "../utils/Pop.js";
 import { profilesService } from "../services/ProfilesService.js";
 import KeepCard from "../components/KeepCard.vue";
@@ -69,8 +69,10 @@ export default {
         Pop.error(error.message, "[Getting Users Keeps]");
       }
     }
-    onMounted(() => {
-      getUsersKeeps(AppState.account.id)
+    watchEffect(() => {
+      if (AppState.account.id) {
+        getUsersKeeps(AppState.account.id)
+      }
     });
     return {
       profile: computed(() => AppState.account),
