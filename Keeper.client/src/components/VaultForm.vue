@@ -22,7 +22,7 @@
           </div>
           <div class="col-12 py-1 g-0 d-flex justify-content-center">
             <input v-model="editable.isPrivate" type="checkbox">
-            <span class="ms-1">Private?</span>
+            <span class="ms-1">Make Vault Private?</span>
           </div>
           <div class="col-12 d-flex align-items-center pt-2 justify-content-between g-0">
             <button class="btn btn-dark" type="button" data-bs-dismiss="modal" data-bs-target="#vaultForm">

@@ -17,6 +17,16 @@ class VaultsService{
     const res = await api.post('api/vaults', vaultData)
     AppState.myVaults.unshift(res.data)
   }
+
+  async getVault(vaultId){
+    const res = await api.get(`api/vaults/${vaultId}`)
+    AppState.vault = res.data
+  }
+
+  async getKeepsInVault(vaultId){
+    const res = await api.get(`api/vaults/${vaultId}/keeps`)
+    AppState.keeps = res.data
+  }
 }
 
 export const vaultsService = new VaultsService()
