@@ -3,7 +3,7 @@
     <img :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded-top img-fluid selectable bing"
       onerror="this.src='broken-image.png'" data-bs-toggle="modal" data-bs-target="#keepDetails"
       @click="setKeep(keep.id)">
-    <div class="d-flex justify-content-between align-items-center p-1 bong text-light">
+    <div class="d-flex justify-content-between align-items-center p-1 bong">
       <span class="fs-4 text-shadow hover" data-bs-toggle="modal" data-bs-target="#keepdetails"
         @click="setKeep(keep.id)">{{ keep.name
         }}</span>
@@ -52,17 +52,17 @@ export default {
   transform: scale(1.05);
 }
 
-.text-shadow {
-  text-shadow: 1px 1px 0 black;
-}
+// .text-shadow {
+//   text-shadow: 1px 1px 0 black;
+// }
 
-.bing {
-  position: relative;
-}
+// .bing {
+//   position: relative;
+// }
 
-.bong {
-  position: absolute;
-  transform: translateY(-50px);
-  width: 23vw;
-}
+// .bong {
+//   position: relative;
+//   transform: translateY(-50px);
+//   width: 23vw;
+// }
 </style>

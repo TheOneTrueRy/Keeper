@@ -1,9 +1,9 @@
 <template>
-  <div class="border border-dark border-1 rounded elevation-2">
-    <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded-top img-fluid selectable"
+  <div class="border border-dark border-1 rounded elevation-2 specialSauce">
+    <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded-top img-fluid selectable bing"
       onerror="this.src='broken-image.png'" @click="setVault(vault.id)">
-    <div class="d-flex justify-content-between align-items-center p-1">
-      <span class="fs-5 hover" @click="setVault(vault.id)">{{ vault.name
+    <div class="d-flex justify-content-between align-items-center p-1 bong">
+      <span class="fs-4 text-shadow hover" @click="setVault(vault.id)">{{ vault.name
       }}</span>
       <span v-if="vault.isPrivate"><i class="mdi mdi-lock"></i></span>
     </div>
@@ -43,4 +43,18 @@ export default {
 .hover:hover {
   transform: scale(1.05);
 }
+
+// .bing {
+//   position: relative;
+// }
+
+// .bong {
+//   position: relative;
+//   transform: translateY(-40px);
+//   width: 23vw;
+// }
+
+// .text-shadow {
+//   text-shadow: 1px 1px 0 black;
+// }
 </style>
