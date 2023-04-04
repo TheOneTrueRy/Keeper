@@ -4,7 +4,7 @@
       onerror="this.src='broken-image.png'" data-bs-toggle="modal" data-bs-target="#keepDetails"
       @click="setKeep(keep.id)">
     <div class="d-flex justify-content-between align-items-center p-1 bong">
-      <span class="fs-4 text-shadow hover" data-bs-toggle="modal" data-bs-target="#keepdetails"
+      <span class="fs-4 text-shadow hover" data-bs-toggle="modal" data-bs-target="#keepDetails"
         @click="setKeep(keep.id)">{{ keep.name
         }}</span>
       <slot></slot>
