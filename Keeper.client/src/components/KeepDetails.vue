@@ -1,14 +1,19 @@
 <template>
   <div v-if="keep" class="container-fluid keep-modal">
     <div class="row h-100">
-      <div class="col-6 g-0 bg-cover h-100 p-1 d-flex justify-content-end align-items-end"
-        :style="{ backgroundImage: `url(${keep.img})` }">
-        <button v-if="keep.creator.id == account.id" class="btn btn-danger" title="Delete This Keep"
-          @click="deleteKeep(keep.id)">
-          <span>Delete Keep <i class="mdi mdi-delete"></i></span>
-        </button>
+      <div class="col-12 col-md-6 g-0 d-flex flex-column justify-content-center align-items-center bg-white">
+        <img :src="keep.img" alt="" class="fill">
+        <div class="d-flex d-md-none mt-2 justify-content-between px-2 w-100">
+          <button v-if="keep.creator.id == account.id" class="btn btn-danger" title="Delete This Keep"
+            @click="deleteKeep(keep.id)">
+            <span>Delete Keep <i class="mdi mdi-delete"></i></span>
+          </button>
+          <button class="btn p-0" type="button" data-bs-dismiss="modal" data-bs-target="#keepDetails">
+            <span><i class="mdi mdi-close fs-2"></i></span>
+          </button>
+        </div>
       </div>
-      <div class="col-6 h-100 d-flex">
+      <div class="col-12 col-md-6 h-100 d-flex bg-white">
         <div class="row h-100">
           <div class="col-12 d-flex justify-content-center align-items-center py-2">
             <span><i class="mdi mdi-eye"></i> {{ keep.views }}</span>
@@ -18,8 +23,8 @@
             <span class="fs-2 text-center">{{ keep.name }}</span>
             <span class="pt-3">{{ keep.description }}</span>
           </div>
-          <div class="col-6 d-flex justify-content-start align-items-center">
-            <div class="btn-group ps-2" v-if="account.id">
+          <div class="col-6 d-flex justify-content-between align-items-center">
+            <div class="btn-group" v-if="account.id">
               <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
                 VAULTS
@@ -35,9 +40,14 @@
                 <li><span>No Vaults Created!</span></li>
               </ul>
             </div>
+            <div>
+              <button class="btn btn-danger py-1 px-2" title="Delete this keep."
+                @click="deleteKeep(keep.id)">Delete</button>
+            </div>
           </div>
           <div class="col-6 d-flex align-items-center justify-content-around">
-            <router-link :to="{ name: 'Profile', params: { profileId: keep.creator.id } }" data-bs-dismiss="modal">
+            <router-link :to="{ name: 'Profile', params: { profileId: keep.creator.id } }" data-bs-dismiss="modal"
+              data-bs-target="#keepDetails">
               <img :src="keep.creator.picture" :alt="keep.creator.name"
                 class="creator-pfp elevation-1 border border-dark">
             </router-link>
@@ -109,7 +119,8 @@ export default {
 }
 
 .bg-cover {
-  background-size: cover;
+  background-size: auto;
+  background-position: center;
 }
 
 .keep-body {
@@ -125,5 +136,14 @@ export default {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+.fill {
+  height: 70vh;
+  width: 100%;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 </style>
