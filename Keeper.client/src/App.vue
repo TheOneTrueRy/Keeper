@@ -1,15 +1,15 @@
 <template>
-  <header class=" sticky-md-top fixed-bottom  bg-white">
+  <header class="sticky-md-top fixed-bottom smooth" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
     <div class="container-fluid elevation-3">
       <div class="row">
-        <div class="col-md-2 col-4 d-flex align-items-center justify-content-center">
+        <div class="col-md-2 col-3 d-flex align-items-center justify-content-center">
           <router-link :to="{ name: 'Home' }">
             <button class="btn btn-dark">
               <span>Home <i class="mdi mdi-home d-none d-md-inline"></i></span>
             </button>
           </router-link>
         </div>
-        <div class="col-md-3 col-4 d-flex align-items-center justify-content-center">
+        <div class="col-md-3 col-3 d-flex align-items-center justify-content-center">
           <div class="dropdown" v-if="account.id">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
               data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,16 +21,22 @@
             </ul>
           </div>
         </div>
-        <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1">
+        <div class="col-3 d-none d-md-flex align-items-center justify-content-center py-1">
           <img src="keep-icon.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
         </div>
-        <div class="col-md-2 col-4 offset-md-3 d-flex align-items-center justify-content-center">
+        <div class="col-2 d-flex align-items-center justify-content-center">
+          <button v-if="theme == 'light'" class="btn p-0 text-dark" @click="darkMode()"><i
+              class="mdi mdi-moon-waning-crescent fs-1"></i></button>
+          <button v-else class="btn p-0 text-light" @click="lightMode()"><i
+              class="mdi mdi-white-balance-sunny fs-1"></i></button>
+        </div>
+        <div class="col-md-2 col-3 d-flex align-items-center justify-content-center">
           <Login />
         </div>
       </div>
     </div>
   </header>
-  <main>
+  <main class="smooth" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
     <router-view />
   </main>
 </template>
@@ -41,6 +47,7 @@ import { AppState } from './AppState'
 import Login from "./components/Login.vue"
 import Pop from "./utils/Pop.js"
 import { vaultsService } from "./services/VaultsService.js"
+import bodyParser from "body-parser"
 
 export default {
   setup() {
@@ -57,11 +64,21 @@ export default {
       if (AppState.account.id) {
         getMyVaults()
       }
+      if (AppState.theme == 'light') {
+
+      }
     })
 
     return {
       appState: computed(() => AppState),
-      account: computed(() => AppState.account)
+      account: computed(() => AppState.account),
+      theme: computed(() => AppState.theme),
+      darkMode() {
+        AppState.theme = 'dark'
+      },
+      lightMode() {
+        AppState.theme = 'light'
+      },
     }
   },
   components: { Login }
@@ -77,5 +94,9 @@ export default {
 .logo {
   height: 50px;
   width: 50px;
+}
+
+.smooth {
+  transition: 0.5s;
 }
 </style>

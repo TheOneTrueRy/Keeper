@@ -13,5 +13,7 @@ export const AppState = reactive({
   myVaults: [],
   vault: null,
 
-  profile: null
+  profile: null,
+
+  theme: 'light'
 })
