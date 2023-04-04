@@ -6,24 +6,28 @@
           :title="`${profile.name}'s cover image.'`" class="cover-image rounded border border-dark">
         <img v-else src="Public\broken-image.png" alt="" class="cover-image rounded border border-dark">
       </div>
-      <div class="col-12 d-flex align-items-center justify-content-center translate-up">
+      <div class="col-12 d-flex flex-column align-items-center justify-content-center translate-up">
         <img :src="profile.picture" :alt="profile.name" :title="`${profile.name}'s profile picture.'`"
           class="profile-picture border border-dark elevation-1">
+        <span class="fs-2">{{ profile.name }}</span>
+        <div>
+          <span>{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</span>
+        </div>
       </div>
       <div class="col-8 offset-2">
         <span class="fs-2 fw-bold">Vaults</span>
       </div>
-      <div class="col-8 offset-2 my-overflow">
+      <div class="col-8 offset-2 my-overflow rounded border border-dark">
         <div class="bricks">
           <div v-for="v in vaults">
-            <span>{{ v.name }}</span>
+            <VaultCard :vault="v" />
           </div>
         </div>
       </div>
       <div class="col-8 offset-2">
         <span class="fs-2 fw-bold">Keeps</span>
       </div>
-      <div class="col-8 offset-2 my-overflow">
+      <div class="col-8 offset-2 my-overflow mb-2 rounded border border-dark">
         <div class="bricks">
           <div v-for="k in keeps">
             <KeepCard :keep="k" />
@@ -43,6 +47,7 @@ import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { profilesService } from "../services/ProfilesService.js";
 import KeepCard from "../components/KeepCard.vue";
+import VaultCard from "../components/VaultCard.vue";
 
 export default {
   setup() {
@@ -82,7 +87,7 @@ export default {
       vaults: computed(() => AppState.vaults)
     };
   },
-  components: { KeepCard }
+  components: { KeepCard, VaultCard }
 }
 </script>
 
@@ -123,7 +128,7 @@ export default {
 }
 
 .my-overflow {
-  height: 50vh;
+  height: 55vh;
   overflow: scroll;
 }
 

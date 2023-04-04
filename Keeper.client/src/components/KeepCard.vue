@@ -42,10 +42,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.text-shadow {
-  text-shadow: 1px 1px 0 black;
-}
-
 .hover {
   transition: 0.4s;
   cursor: pointer;
