@@ -1,6 +1,6 @@
 <template>
   <div class="border border-1 rounded elevation-2" :class="[theme == 'light' ? 'border-dark' : 'border-light']">
-    <img :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded-top img-fluid selectable bing"
+    <img id="keep-img" :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded-top img-fluid selectable bing"
       onerror="this.src='broken-image.png'" data-bs-toggle="modal" data-bs-target="#keepDetails"
       @click="setKeep(keep.id)">
     <div class="d-flex justify-content-between align-items-center p-1 bong">
@@ -53,6 +53,10 @@ export default {
 
 .hover:hover {
   transform: scale(1.05);
+}
+
+#keep-img {
+  min-width: 100%;
 }
 
 // .text-shadow {
