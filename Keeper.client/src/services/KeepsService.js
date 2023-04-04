@@ -14,6 +14,11 @@ class KeepsService{
     const res = await api.get('api/keeps/' + keepId)
     AppState.keep = res.data
   }
+
+  async createKeep(keepData){
+    const res = await api.post('api/keeps', keepData)
+    AppState.keeps.unshift(res.data)
+  }
 }
 
 export const keepsService = new KeepsService()

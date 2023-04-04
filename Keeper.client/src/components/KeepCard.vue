@@ -1,5 +1,5 @@
 <template>
-  <div class="border border-dark border-1 rounded elevation-2">
+  <div class="border border-1 rounded elevation-2" :class="[theme == 'light' ? 'border-dark' : 'border-light']">
     <img :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded-top img-fluid selectable bing"
       onerror="this.src='broken-image.png'" data-bs-toggle="modal" data-bs-target="#keepDetails"
       @click="setKeep(keep.id)">
@@ -18,6 +18,8 @@
 
 
 <script>
+import { computed } from "vue";
+import { AppState } from "../AppState.js";
 import { keepsService } from "../services/KeepsService.js";
 import Pop from "../utils/Pop.js";
 import KeepDetails from "./KeepDetails.vue";
@@ -34,7 +36,8 @@ export default {
         } catch (error) {
           Pop.error(error.message, '[Setting Keep]')
         }
-      }
+      },
+      theme: computed(() => AppState.theme)
     };
   },
   components: { KeepDetails }

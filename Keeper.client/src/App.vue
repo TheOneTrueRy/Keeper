@@ -16,8 +16,8 @@
               Create
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              <li><a class="dropdown-item" href="#">New Keep</a></li>
-              <li><a class="dropdown-item" href="#">New Vault</a></li>
+              <li class="selectable p-1" data-bs-toggle="modal" data-bs-target="#keepForm">New Keep</li>
+              <li class="selectable p-1" data-bs-toggle="modal" data-bs-target="#vaultForm">New Vault</li>
             </ul>
           </div>
         </div>
@@ -39,6 +39,13 @@
   <main class="smooth" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
     <router-view />
   </main>
+
+  <Modal id="keepForm">
+    <KeepForm />
+  </Modal>
+  <Modal id="vaultForm">
+    <VaultForm />
+  </Modal>
 </template>
 
 <script>
@@ -47,7 +54,8 @@ import { AppState } from './AppState'
 import Login from "./components/Login.vue"
 import Pop from "./utils/Pop.js"
 import { vaultsService } from "./services/VaultsService.js"
-import bodyParser from "body-parser"
+import KeepForm from "./components/KeepForm.vue"
+import VaultForm from "./components/VaultForm.vue"
 
 export default {
   setup() {
@@ -81,7 +89,7 @@ export default {
       },
     }
   },
-  components: { Login }
+  components: { Login, KeepForm, VaultForm }
 }
 </script>
 <style lang="scss">

@@ -5,7 +5,8 @@
         <KeepCard :keep="k">
           <router-link :to="{ name: 'Profile', params: { profileId: k.creator.id } }" v-if="k.creator">
             <img :src="k.creator.picture" :alt="k.creator.name" :title="k.creator.name"
-              class="creator-pfp border border-dark elevation-1" onerror="this.src='broken-image.png'">
+              class="creator-pfp border elevation-1" onerror="this.src='broken-image.png'"
+              :class="[theme == 'light' ? 'border-dark' : 'border-light']">
           </router-link>
         </KeepCard>
       </div>
@@ -37,7 +38,8 @@ export default {
     })
 
     return {
-      keeps: computed(() => AppState.keeps)
+      keeps: computed(() => AppState.keeps),
+      theme: computed(() => AppState.theme)
     };
   },
   components: { KeepCard }
