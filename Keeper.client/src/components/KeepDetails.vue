@@ -1,8 +1,12 @@
 <template>
   <div v-if="keep" class="container-fluid keep-modal">
     <div class="row h-100">
-      <div class="col-6 g-0 bg-cover h-100" :style="{ backgroundImage: `url(${keep.img})` }">
-
+      <div class="col-6 g-0 bg-cover h-100 p-1 d-flex justify-content-end align-items-end"
+        :style="{ backgroundImage: `url(${keep.img})` }">
+        <button v-if="keep.creator.id == account.id" class="btn btn-danger" title="Delete This Keep"
+          @click="deleteKeep(keep.id)">
+          <span>Delete Keep <i class="mdi mdi-delete"></i></span>
+        </button>
       </div>
       <div class="col-6 h-100 d-flex">
         <div class="row h-100">
@@ -51,6 +55,7 @@ import { computed } from "vue";
 import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { vaultKeepsService } from "../services/VaultKeepsService.js";
+import { keepsService } from "../services/KeepsService.js";
 
 export default {
   setup() {
@@ -64,6 +69,16 @@ export default {
           Pop.success('Keep successfully added to your vault!')
         } catch (error) {
           Pop.error(error.message, '[Vaulting A Keep]')
+        }
+      },
+      async deleteKeep(keepId) {
+        try {
+          if (await Pop.confirm('Are you sure you want to PERMANENTLY delete your keep?')) {
+            await keepsService.deleteKeep(keepId)
+            Pop.success('Your keep was successfully deleted.')
+          }
+        } catch (error) {
+          Pop.error(error.message, '[Deleting Keep]')
         }
       }
     }

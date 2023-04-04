@@ -49,14 +49,31 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, watchEffect } from 'vue'
 import { AppState } from './AppState'
 import Login from "./components/Login.vue"
 import KeepForm from "./components/KeepForm.vue"
 import VaultForm from "./components/VaultForm.vue"
+import { vaultsService } from "./services/VaultsService.js"
+import Pop from "./utils/Pop.js"
 
 export default {
   setup() {
+
+    async function getMyVaults() {
+      try {
+        await vaultsService.getMyVaults()
+      } catch (error) {
+        Pop.error(error.message, '[Getting My Vaults]')
+      }
+    }
+
+    watchEffect(() => {
+      if (AppState.account.id) {
+        getMyVaults()
+      }
+    })
+
     return {
       appState: computed(() => AppState),
       account: computed(() => AppState.account),
