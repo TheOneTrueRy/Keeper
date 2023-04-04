@@ -2,7 +2,12 @@
   <div class="container-fluid">
     <div class="bricks">
       <div v-for="k in keeps" class="">
-        <KeepCard :keep="k" />
+        <KeepCard :keep="k">
+          <router-link :to="{ name: 'Profile', params: { profileId: k.creator.id } }">
+            <img :src="k.creator.picture" :alt="k.creator.name" :title="k.creator.name"
+              class="creator-pfp border border-dark elevation-1" onerror="this.src='broken-image.png'">
+          </router-link>
+        </KeepCard>
       </div>
     </div>
   </div>
@@ -56,5 +61,11 @@ export default {
       margin-top: 1em;
     }
   }
+}
+
+.creator-pfp {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
 }
 </style>

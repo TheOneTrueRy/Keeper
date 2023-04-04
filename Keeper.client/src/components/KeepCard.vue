@@ -6,10 +6,7 @@
     <div class="d-flex justify-content-between align-items-center p-1">
       <span class="fs-5 hover" data-bs-toggle="modal" data-bs-target="#keepdetails" @click="setKeep(keep.id)">{{ keep.name
       }}</span>
-      <router-link :to="{ name: 'Profile', params: { profileId: keep.creator.id } }">
-        <img :src="keep.creator.picture" :alt="keep.creator.name" :title="keep.creator.name" class="creator-pfp"
-          onerror="this.src='broken-image.png'">
-      </router-link>
+      <slot></slot>
     </div>
   </div>
 
@@ -45,12 +42,6 @@ export default {
 
 
 <style lang="scss" scoped>
-.creator-pfp {
-  height: 40px;
-  width: 40px;
-  border-radius: 50%;
-}
-
 .text-shadow {
   text-shadow: 1px 1px 0 black;
 }

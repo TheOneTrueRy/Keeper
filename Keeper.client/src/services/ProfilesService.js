@@ -9,6 +9,16 @@ class ProfilesService{
     AppState.profile = res.data
   }
 
+  async getUsersKeeps(profileId){
+    const res = await api.get(`api/profiles/${profileId}/keeps`)
+    AppState.keeps = res.data
+  }
+
+  async getUsersVaults(profileId){
+    const res = await api.get(`api/profiles/${profileId}/vaults`)
+    AppState.vaults = res.data
+  }
+
 }
 
 export const profilesService = new ProfilesService()
