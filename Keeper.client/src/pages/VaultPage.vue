@@ -33,7 +33,12 @@
       <div class="col-8 offset-2">
         <div class="bricks">
           <div v-for="k in keeps">
-            <KeepCard :keep="k" />
+            <KeepCard :keep="k">
+              <button v-if="vault.creator.id == account.id" class="btn btn-danger"
+                title="Remove this keep from this vault." @click="removeKeep(k.vaultKeepId)">
+                <span><i class="mdi mdi-delete"></i></span>
+              </button>
+            </KeepCard>
           </div>
         </div>
       </div>
@@ -43,12 +48,13 @@
 
 
 <script>
-import { computed, onMounted, onUnmounted, watchEffect } from "vue";
+import { computed, onUnmounted, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { useRoute, useRouter } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { vaultsService } from "../services/VaultsService.js";
 import KeepCard from "../components/KeepCard.vue";
+import { vaultKeepsService } from "../services/VaultKeepsService.js";
 
 export default {
   setup() {
@@ -102,6 +108,15 @@ export default {
           await vaultsService.updateVault(vault)
         } catch (error) {
           Pop.error(error.message, '[Changing Vault Privacy]')
+        }
+      },
+      async removeKeep(vaultKeepId) {
+        try {
+          if (await Pop.confirm('Are you sure you want to remove this keep from this vault?')) {
+            await vaultKeepsService.removeKeep(vaultKeepId)
+          }
+        } catch (error) {
+          Pop.error(error.message, '[Removing Keep]')
         }
       }
     };

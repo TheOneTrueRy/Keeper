@@ -1,4 +1,5 @@
 import { AppState } from "../AppState.js"
+import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 
 
@@ -26,6 +27,7 @@ class VaultsService{
   async getKeepsInVault(vaultId){
     const res = await api.get(`api/vaults/${vaultId}/keeps`)
     AppState.keeps = res.data
+    logger.log(AppState.keeps)
   }
 
   async deleteVault(vaultId){
