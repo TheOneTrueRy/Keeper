@@ -2,29 +2,29 @@
   <div class="container-fluid" :class="[theme == 'light' ? 'bg-light' : 'bg-dark']">
     <div class="row p-2">
       <div class="col-12 d-flex justify-content-between align-items-center">
-        <span class="fs-1">Add Your Keep</span>
+        <span class="fs-1">Edit Your Account</span>
         <button class="btn p-0 text-dark" type="button" data-bs-dismiss="modal" data-bs-target="#keepForm"><i
             class="mdi mdi-close fs-2"></i></button>
       </div>
       <form @submit.prevent="createKeep()">
         <div class="row px-2 pb-2">
           <div class="col-12 py-1 g-0">
-            <input required v-model="editable.name" type="text" placeholder="Title..." class="form-control"
-              maxlength="50">
+            <input required v-model="editable.name" type="text" placeholder="Name..." class="form-control"
+              maxlength="255">
           </div>
           <div class="col-12 py-1 g-0">
-            <input required v-model="editable.img" type="url" placeholder="Image URL..." class="form-control"
-              maxlength="700">
+            <input required v-model="editable.picture" type="url" placeholder="Profile Picture URL..."
+              class="form-control" maxlength="255">
           </div>
           <div class="col-12 py-1 g-0">
-            <textarea required v-model="editable.description" name="description" id="description" cols="20" rows="5"
-              placeholder="Vault Description..." class="form-control" maxlength="500"></textarea>
+            <input required v-model="editable.coverImg" type="url" placeholder="Cover Image URL..." class="form-control"
+              maxlength="255">
           </div>
           <div class="col-12 d-flex align-items-center pt-2 justify-content-between g-0">
-            <button class="btn btn-dark" type="button" data-bs-dismiss="modal" data-bs-target="#vaultForm">
+            <button class="btn btn-dark" type="button" data-bs-dismiss="modal" data-bs-target="#accountForm">
               <span>Cancel</span>
             </button>
-            <button class="btn btn-success" type="submit" data-bs-dismiss="modal" data-bs-target="#vaultForm">
+            <button class="btn btn-success" type="submit" data-bs-dismiss="modal" data-bs-target="#accountForm">
               <span>Submit</span>
             </button>
           </div>
@@ -52,8 +52,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-textarea {
-  resize: none;
-}
-</style>
+<style lang="scss" scoped></style>

@@ -9,13 +9,14 @@
       <form @submit.prevent="createKeep()">
         <div class="row px-2 pb-2">
           <div class="col-12 py-1 g-0">
-            <input v-model="editable.name" type="text" placeholder="Title..." class="form-control" maxlength="50">
+            <input required v-model="editable.name" type="text" placeholder="Title..." class="form-control"
+              maxlength="50">
           </div>
           <div class="col-12 py-1 g-0">
-            <input v-model="editable.img" type="url" placeholder="Image URL..." class="form-control">
+            <input required v-model="editable.img" type="url" placeholder="Image URL..." class="form-control">
           </div>
           <div class="col-12 py-1 g-0">
-            <textarea v-model="editable.description" name="description" id="description" cols="20" rows="5"
+            <textarea required v-model="editable.description" name="description" id="description" cols="20" rows="5"
               placeholder="Keep Description..." class="form-control" maxlength="500"></textarea>
           </div>
           <div class="col-12 d-flex align-items-center pt-2 justify-content-between g-0">

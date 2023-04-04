@@ -6,13 +6,19 @@
           :title="`${profile.name}'s cover image.'`" class="cover-image rounded border border-dark">
         <img v-else src="Public\broken-image.png" alt="" class="cover-image rounded border border-dark">
       </div>
-      <div class="col-12 d-flex flex-column align-items-center justify-content-center translate-up">
+      <div class="col-4 offset-4 d-flex flex-column align-items-center justify-content-center translate-up">
         <img :src="profile.picture" :alt="profile.name" :title="`${profile.name}'s profile picture.'`"
           class="profile-picture border border-dark elevation-1">
         <span class="fs-2">{{ profile.name }}</span>
         <div>
           <span>{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</span>
         </div>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-dark" title="Edit Your Account Details" data-bs-toggle="modal"
+          data-bs-target="#accountForm">
+          <span><i class="mdi mdi-pencil"></i></span>
+        </button>
       </div>
       <div class="col-8 offset-2">
         <span class="fs-2 fw-bold">Vaults</span>
@@ -36,6 +42,10 @@
       </div>
     </div>
   </div>
+
+  <Modal id="accountForm">
+    <AccountForm />
+  </Modal>
 </template>
 
 
@@ -47,6 +57,7 @@ import Pop from "../utils/Pop.js";
 import { profilesService } from "../services/ProfilesService.js";
 import KeepCard from "../components/KeepCard.vue";
 import VaultCard from "../components/VaultCard.vue";
+import Modal from "../components/Modal.vue";
 
 export default {
   setup() {
@@ -67,7 +78,7 @@ export default {
       vaults: computed(() => AppState.myVaults)
     };
   },
-  components: { KeepCard, VaultCard }
+  components: { KeepCard, VaultCard, Modal }
 }
 </script>
 
