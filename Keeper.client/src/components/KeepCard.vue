@@ -52,7 +52,7 @@ export default {
 }
 
 .hover:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 #keep-img {
