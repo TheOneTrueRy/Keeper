@@ -24,10 +24,10 @@
         <div class="col-3 d-none d-md-flex align-items-center justify-content-center py-1">
           <img src="keep-icon.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
         </div>
-        <div class="col-2 d-flex align-items-center justify-content-center">
-          <button v-if="theme == 'light'" class="btn p-0 text-dark" @click="darkMode()"><i
-              class="mdi mdi-moon-waning-crescent fs-1"></i></button>
-          <button v-else class="btn p-0 text-light" @click="lightMode()"><i
+        <div class="col-2 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
+          <button v-if="theme == 'light'" class="btn p-0 text-dark" @click="darkMode()"
+            title="Toggle the color theme of the site."><i class="mdi mdi-moon-waning-crescent fs-1"></i></button>
+          <button v-else class="btn p-0 text-light" @click="lightMode()" title="Toggle the color theme of the site."><i
               class="mdi mdi-white-balance-sunny fs-1"></i></button>
         </div>
         <div class="col-md-2 col-3 d-flex align-items-center justify-content-center">

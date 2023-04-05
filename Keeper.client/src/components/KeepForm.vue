@@ -50,6 +50,7 @@ export default {
           const keepData = editable.value
           await keepsService.createKeep(keepData)
           editable.value = {}
+          Pop.success('Keep successfully created!')
         } catch (error) {
           Pop.error(error.message, '[Creating Keep]')
         }

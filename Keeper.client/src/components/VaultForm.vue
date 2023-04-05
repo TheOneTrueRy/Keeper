@@ -56,6 +56,7 @@ export default {
           const vaultData = editable.value
           await vaultsService.createVault(vaultData)
           editable.value = {}
+          Pop.success('Vault successfully created!')
         } catch (error) {
           Pop.error(error.message, '[Creating Vault]')
         }
