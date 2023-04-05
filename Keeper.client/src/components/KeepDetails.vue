@@ -47,7 +47,7 @@
           </div>
           <div class="col-6 d-flex align-items-center justify-content-around">
             <router-link :to="{ name: 'Profile', params: { profileId: keep.creator.id } }" data-bs-dismiss="modal"
-              data-bs-target="#keepDetails">
+              data-bs-target="#keepDetails" :title="`Go to ${keep.creator.name}'s profile page!`">
               <img :src="keep.creator.picture" :alt="keep.creator.name"
                 class="creator-pfp elevation-1 border border-dark">
             </router-link>
@@ -139,7 +139,7 @@ export default {
 }
 
 .fill {
-  height: 70vh;
+  max-height: 70vh;
   width: 100%;
 }
 
