@@ -1,13 +1,9 @@
 <template>
   <div v-if="keep" class="container-fluid keep-modal">
     <div class="row h-100">
-      <div class="col-12 col-md-6 g-0 d-flex flex-column justify-content-center align-items-center bg-white">
+      <div class="col-12 col-md-6 g-0 d-flex flex-column justify-content-center align-items-center">
         <img :src="keep.img" alt="" class="fill">
-        <div class="d-flex d-md-none mt-2 justify-content-between px-2 w-100">
-          <button v-if="keep.creator.id == account.id" class="btn btn-danger" title="Delete This Keep"
-            @click="deleteKeep(keep.id)">
-            <span>Delete Keep <i class="mdi mdi-delete"></i></span>
-          </button>
+        <div class="d-flex d-md-none justify-content-end px-2 w-100">
           <button class="btn p-0" type="button" data-bs-dismiss="modal" data-bs-target="#keepDetails">
             <span><i class="mdi mdi-close fs-2"></i></span>
           </button>
@@ -30,7 +26,8 @@
                 VAULTS
               </button>
               <ul v-if="myVaults.length > 0" class="dropdown-menu">
-                <li v-for="v in myVaults" class="selectable" @click="vaultAKeep(v.id, keep.id)">
+                <li v-for="v in myVaults" class="selectable" @click="vaultAKeep(v.id, keep.id)"
+                  :title="`Add this keep to your ${v.name} vault!`">
                   <span>
                     {{ v.name }}
                   </span>
@@ -98,24 +95,15 @@ export default {
 
 
 <style lang="scss" scoped>
-#column-row-switcher {
-  flex-direction: column;
-}
-
 @media screen and (min-width: 768px) {
   .keep-modal {
     height: 70vh;
     width: 100%;
   }
 
-  #column-row-switcher {
-    flex-direction: row;
+  .fill {
+    height: 100%;
   }
-}
-
-.bg-cover {
-  background-size: auto;
-  background-position: center;
 }
 
 .keep-body {
@@ -134,11 +122,8 @@ export default {
 }
 
 .fill {
+  min-height: 90%;
   max-height: 70vh;
   width: 100%;
-}
-
-.overflow-hidden {
-  overflow: hidden;
 }
 </style>

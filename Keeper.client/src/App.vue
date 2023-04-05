@@ -21,10 +21,10 @@
             </ul>
           </div>
         </div>
-        <div class="col-3 d-none d-md-flex align-items-center justify-content-center py-1">
+        <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1">
           <img src="keep-icon.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
         </div>
-        <div class="col-2 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
+        <div class="col-2 col-md-3 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
           <button v-if="theme == 'light'" class="btn p-0 text-dark" @click="darkMode()"
             title="Toggle the color theme of the site."><i class="mdi mdi-moon-waning-crescent fs-1"></i></button>
           <button v-else class="btn p-0 text-light" @click="lightMode()" title="Toggle the color theme of the site."><i

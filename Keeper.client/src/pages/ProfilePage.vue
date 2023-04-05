@@ -42,7 +42,7 @@
 <script>
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 import { useRoute } from "vue-router";
 import Pop from "../utils/Pop.js";
 import { profilesService } from "../services/ProfilesService.js";
@@ -81,6 +81,10 @@ export default {
         getUsersKeeps(route.params.profileId),
         getUsersVaults(route.params.profileId);
     });
+    onUnmounted(() => {
+      AppState.profile = null
+      AppState.keeps = []
+    })
     return {
       profile: computed(() => AppState.profile),
       keeps: computed(() => AppState.keeps),

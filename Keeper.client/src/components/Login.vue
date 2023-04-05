@@ -8,7 +8,7 @@
         <div type="button" class="no-select" data-bs-toggle="dropdown" aria-expanded="false">
           <div v-if="account.picture || user.picture">
             <img :src="account.picture || user.picture" alt="account photo" height="40"
-              class="rounded-circle border border-1 border-dark selectable" />
+              class="rounded-circle border border-1 border-dark selectable" title="Visit your Account Page or logout." />
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">
