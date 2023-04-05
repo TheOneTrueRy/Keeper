@@ -5,9 +5,8 @@
         onerror="this.src='broken-image.png'" @click="setVault(vault.id)">
     </router-link>
     <div class="d-flex justify-content-between align-items-center p-1 bong">
-      <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }"
-        :class="[theme == 'light' ? 'text-dark' : 'text-light']" class="hover">
-        <span class="fs-4 text-shadow" @click="setVault(vault.id)">{{ vault.name
+      <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }" class="hover text-light">
+        <span class="fs-4 text-shadow clip-text" @click="setVault(vault.id)">{{ vault.name
         }}</span>
       </router-link>
       <span v-if="vault.isPrivate"><i class="mdi mdi-lock"></i></span>
@@ -52,17 +51,17 @@ export default {
   transform: scale(1.02);
 }
 
-// .bing {
-//   position: relative;
-// }
+.bing {
+  position: relative;
+}
 
-// .bong {
-//   position: relative;
-//   transform: translateY(-40px);
-//   width: 23vw;
-// }
+.bong {
+  position: absolute;
+  transform: translateY(-40px);
+  width: 23vw;
+}
 
-// .text-shadow {
-//   text-shadow: 1px 1px 0 black;
-// }
+.text-shadow {
+  text-shadow: 1px 1px 0 black;
+}
 </style>

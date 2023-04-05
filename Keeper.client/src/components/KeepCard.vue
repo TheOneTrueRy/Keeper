@@ -1,10 +1,10 @@
 <template>
   <div class="border border-1 rounded elevation-2" :class="[theme == 'light' ? 'border-dark' : 'border-light']">
-    <img id="keep-img" :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded-top img-fluid selectable bing"
+    <img id="keep-img" :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded img-fluid selectable bing"
       onerror="this.src='broken-image.png'" data-bs-toggle="modal" data-bs-target="#keepDetails"
       @click="setKeep(keep.id)">
-    <div class="d-flex justify-content-between align-items-center p-1 bong">
-      <span class="fs-4 text-shadow hover" data-bs-toggle="modal" data-bs-target="#keepDetails"
+    <div class="d-flex justify-content-between align-items-center p-1 bong text-light">
+      <span class="fs-4 text-shadow hover clip-text" data-bs-toggle="modal" data-bs-target="#keepDetails"
         @click="setKeep(keep.id)">{{ keep.name
         }}</span>
       <slot></slot>
@@ -59,17 +59,17 @@ export default {
   min-width: 100%;
 }
 
-// .text-shadow {
-//   text-shadow: 1px 1px 0 black;
-// }
+.text-shadow {
+  text-shadow: 1px 1px 0 black;
+}
 
-// .bing {
-//   position: relative;
-// }
+.bing {
+  position: relative;
+}
 
-// .bong {
-//   position: relative;
-//   transform: translateY(-50px);
-//   width: 23vw;
-// }
+.bong {
+  position: absolute;
+  transform: translateY(-46px);
+  width: 23vw;
+}
 </style>

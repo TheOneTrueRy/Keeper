@@ -2,7 +2,7 @@
   <div v-if="profile" class="container-fluid">
     <div class="row">
       <div class="col-8 offset-2 p-3">
-        <img v-if="profile.coverImg" :src="profile.coverImg" :alt="`${profile.name}'s cover image.'`"
+        <img v-if="profile.coverImage" :src="profile.coverImage" :alt="`${profile.name}'s cover image.'`"
           :title="`${profile.name}'s cover image.'`" class="cover-image rounded border border-dark">
         <img v-else src="Public\broken-image.png" alt="" class="cover-image rounded border border-dark">
       </div>
@@ -14,20 +14,20 @@
           <span>{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</span>
         </div>
       </div>
-      <div class="col-8 offset-2">
-        <span class="fs-2 fw-bold">Vaults</span>
+      <div class="col-8 offset-2 mb-1">
+        <span class="fs-1 fw-bold">Vaults</span>
       </div>
-      <div class="col-8 offset-2 my-overflow rounded border border-dark">
+      <div class="col-8 offset-2">
         <div class="bricks">
           <div v-for="v in vaults">
             <VaultCard :vault="v" />
           </div>
         </div>
       </div>
-      <div class="col-8 offset-2">
-        <span class="fs-2 fw-bold">Keeps</span>
+      <div class="col-8 offset-2 mb-1">
+        <span class="fs-1 fw-bold">Keeps</span>
       </div>
-      <div class="col-8 offset-2 my-overflow mb-2 rounded border border-dark">
+      <div class="col-8 offset-2 mb-2">
         <div class="bricks">
           <div v-for="k in keeps">
             <KeepCard :keep="k" />

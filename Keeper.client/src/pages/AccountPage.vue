@@ -23,7 +23,7 @@
       <div class="col-8 offset-2">
         <span class="fs-2 fw-bold">Vaults</span>
       </div>
-      <div class="col-8 offset-2 my-overflow rounded border border-dark">
+      <div class="col-8 offset-2">
         <div class="bricks">
           <div v-for="v in vaults">
             <VaultCard :vault="v" />
@@ -33,7 +33,7 @@
       <div class="col-8 offset-2">
         <span class="fs-2 fw-bold">Keeps</span>
       </div>
-      <div class="col-8 offset-2 my-overflow mb-2 rounded border border-dark">
+      <div class="col-8 offset-2 mb-2">
         <div class="bricks">
           <div v-for="k in keeps">
             <KeepCard :keep="k" />

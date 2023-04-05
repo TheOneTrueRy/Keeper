@@ -102,11 +102,6 @@ export default {
   flex-direction: column;
 }
 
-.keep-modal {
-  height: 100vh;
-  width: 100vw;
-}
-
 @media screen and (min-width: 768px) {
   .keep-modal {
     height: 70vh;
