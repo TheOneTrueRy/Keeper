@@ -51,7 +51,7 @@ export default {
   columns: 2;
 
   &>div {
-    margin-top: 2em;
+    margin-bottom: 2em;
   }
 }
 
@@ -60,7 +60,7 @@ export default {
     columns: 4;
 
     &>div {
-      margin-top: 1em;
+      margin-bottom: 1em;
     }
   }
 }

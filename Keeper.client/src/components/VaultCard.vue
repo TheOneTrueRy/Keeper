@@ -1,7 +1,7 @@
 <template>
   <div class="border border-1 rounded elevation-2" :class="[theme == 'light' ? 'border-dark' : 'border-light']">
     <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }">
-      <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded-top img-fluid selectable bing"
+      <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded img-fluid selectable bing"
         onerror="this.src='broken-image.png'" @click="setVault(vault.id)">
     </router-link>
     <div class="d-flex justify-content-between align-items-center p-1 bong">
@@ -63,5 +63,6 @@ export default {
 
 .text-shadow {
   text-shadow: 1px 1px 0 black;
+  color: white;
 }
 </style>
