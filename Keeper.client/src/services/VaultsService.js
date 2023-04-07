@@ -15,6 +15,9 @@ class VaultsService{
   }
 
   async createVault(vaultData){
+    if(vaultData.isPrivate == null){
+      vaultData.isPrivate = false
+    }
     const res = await api.post('api/vaults', vaultData)
     AppState.myVaults.unshift(res.data)
   }
