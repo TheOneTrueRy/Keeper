@@ -9,7 +9,7 @@
       <div class="col-4 offset-4 d-flex flex-column align-items-center justify-content-center translate-up">
         <img :src="profile.picture" :alt="profile.name" :title="`${profile.name}'s profile picture.'`"
           class="profile-picture border border-dark elevation-1">
-        <span class="fs-2">{{ profile.name }}</span>
+        <span class="fs-2 pacifico">{{ profile.name }}</span>
         <div>
           <span>{{ vaults.length }} Vaults | {{ keeps.length }} Keeps</span>
         </div>
@@ -129,12 +129,7 @@ export default {
   }
 }
 
-.my-overflow {
-  height: 55vh;
-  overflow: scroll;
-}
-
-.my-overflow::-webkit-scrollbar {
-  display: none;
+.pacifico {
+  font-family: 'Pacifico', cursive;
 }
 </style>

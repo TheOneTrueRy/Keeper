@@ -5,7 +5,7 @@
         <div class="rounded vault-bg d-flex align-items-center justify-content-end flex-column pb-2 text-light"
           :style="{ backgroundImage: `url(${vault.img})` }">
           <span class="vault-title text-shadow fw-bold">{{ vault.name }}</span>
-          <span class="text-shadow">by {{ vault.creator.name }}</span>
+          <span class="text-shadow fs-5">by {{ vault.creator.name }}</span>
         </div>
       </div>
     </div>
@@ -34,7 +34,7 @@
         <div class="bricks">
           <div v-for="k in keeps">
             <KeepCard :keep="k">
-              <button v-if="vault.creator.id == account.id" class="btn btn-danger"
+              <button v-if="vault.creator.id == account.id" class="btn btn-danger move-over"
                 title="Remove this keep from this vault." @click="removeKeep(k.vaultKeepId)">
                 <span><i class="mdi mdi-delete"></i></span>
               </button>
@@ -140,14 +140,15 @@ export default {
 }
 
 .text-shadow {
-  text-shadow: 1px 1px 0 black;
+  text-shadow: 2px 2px 1px black;
+  color: white;
 }
 
 .bricks {
   columns: 2;
 
   &>div {
-    margin-top: 2em;
+    margin-bottom: 2em;
   }
 }
 
@@ -156,8 +157,12 @@ export default {
     columns: 4;
 
     &>div {
-      margin-top: 1em;
+      margin-bottom: 1em;
     }
   }
+}
+
+.move-over {
+  margin-right: 9em;
 }
 </style>
