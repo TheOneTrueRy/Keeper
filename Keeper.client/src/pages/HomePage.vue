@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid">
-    <div class="bricks">
+  <div class="container-fluid mb-5">
+    <div class="bricks pb-5">
       <div v-for="k in keeps" class="">
         <KeepCard :keep="k">
           <router-link :to="{ name: 'Profile', params: { profileId: k.creator.id } }" v-if="k.creator">

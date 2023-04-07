@@ -4,9 +4,9 @@
       <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded img-fluid selectable bing"
         onerror="this.src='broken-image.png'" @click="setVault(vault.id)">
     </router-link>
-    <div class="d-flex justify-content-start align-items-center p-1 bong">
+    <div class="d-flex justify-content-start align-items-center p-1 bong clip-text">
       <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }" class="hover text-light">
-        <span class="fs-4 text-shadow clip-text" @click="setVault(vault.id)">{{ vault.name
+        <span class="fs-4 text-shadow" @click="setVault(vault.id)">{{ vault.name
         }}</span>
       </router-link>
       <span v-if="vault.isPrivate" class="text-danger pt-1 ps-2"><i class="mdi mdi-lock"></i></span>
@@ -57,8 +57,14 @@ export default {
 
 .bong {
   position: absolute;
-  transform: translateY(-40px);
-  width: 23vw;
+  transform: translateY(-46px);
+  width: 40vw;
+}
+
+@media screen and (min-width: 768px) {
+  .bong {
+    width: 20vw;
+  }
 }
 
 .text-shadow {

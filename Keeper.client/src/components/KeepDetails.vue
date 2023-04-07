@@ -1,11 +1,15 @@
 <template>
   <div v-if="keep" class="container-fluid keep-modal">
     <div class="row h-100">
-      <div class="col-12 col-md-6 g-0 d-flex flex-column justify-content-center align-items-center">
-        <img :src="keep.img" alt="" class="fill">
-        <div class="d-flex d-md-none justify-content-end px-2 w-100">
-          <button class="btn p-0" type="button" data-bs-dismiss="modal" data-bs-target="#keepDetails">
-            <span><i class="mdi mdi-close fs-2"></i></span>
+      <div class="col-12 col-md-6 g-0 d-flex flex-column justify-content-center align-items-center"
+        :style="{ backgroundImage: `url(${keep.img})` }">
+        <div class="w-100 h-100 d-flex justify-content-center blur">
+          <img :src="keep.img" alt="" class="fill" onerror="this.src='broken-image.png'">
+        </div>
+        <div class="d-flex d-md-none justify-content-end w-100">
+          <button class="btn btn-dark w-100 stop-rounding" type="button" data-bs-dismiss="modal"
+            data-bs-target="#keepDetails">
+            <span>Close Details</span>
           </button>
         </div>
       </div>
@@ -15,7 +19,7 @@
             <span><i class="mdi mdi-eye"></i> {{ keep.views }}</span>
             <span class="ms-3"><i class="mdi mdi-chess-rook"></i> {{ keep.kept }}</span>
           </div>
-          <div class="col-12 d-flex flex-column keep-body">
+          <div class="col-12 d-flex flex-column justify-content-center keep-body">
             <span class="fs-2 text-center">{{ keep.name }}</span>
             <span class="pt-3">{{ keep.description }}</span>
           </div>
@@ -95,15 +99,13 @@ export default {
 
 
 <style lang="scss" scoped>
-@media screen and (min-width: 768px) {
-  .keep-modal {
-    height: 70vh;
-    width: 100%;
-  }
+.blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
 
-  .fill {
-    height: 100%;
-  }
+.stop-rounding {
+  border-radius: 0% !important;
 }
 
 .keep-body {
@@ -124,6 +126,18 @@ export default {
 .fill {
   min-height: 90%;
   max-height: 70vh;
-  width: 100%;
+  max-width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .keep-modal {
+    height: 70vh;
+    width: 100%;
+  }
+
+
+  .fill {
+    object-fit: contain;
+  }
 }
 </style>

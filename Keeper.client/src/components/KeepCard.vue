@@ -1,11 +1,11 @@
 <template>
   <div class="border border-1 rounded elevation-2" :class="[theme == 'light' ? 'border-dark' : 'border-light']">
-    <img id="keep-img" :src="keep.img" :alt="keep.name" :title="keep.name" class="rounded img-fluid selectable bing"
-      onerror="this.src='broken-image.png'" data-bs-toggle="modal" data-bs-target="#keepDetails"
-      @click="setKeep(keep.id)">
-    <div class="d-flex justify-content-between align-items-center p-1 bong text-light">
-      <span class="fs-4 text-shadow hover clip-text" data-bs-toggle="modal" data-bs-target="#keepDetails"
-        @click="setKeep(keep.id)">{{ keep.name
+    <img id="keep-img" :src="keep.img" :alt="keep.name" :title="`Look at ${keep.name}'s details!`"
+      class="rounded img-fluid selectable bing" onerror="this.src='broken-image.png'" data-bs-toggle="modal"
+      data-bs-target="#keepDetails" @click="setKeep(keep.id)">
+    <div class="d-flex justify-content-between align-items-center p-1 bong text-light clip-text">
+      <span class="fs-4 text-shadow hover" data-bs-toggle="modal" data-bs-target="#keepDetails" @click="setKeep(keep.id)"
+        :title="`Look at ${keep.name}'s details!`">{{ keep.name
         }}</span>
       <slot></slot>
     </div>
@@ -76,7 +76,7 @@ export default {
 
 @media screen and (min-width: 768px) {
   .bong {
-    width: 20vw;
+    width: 18vw;
   }
 }
 </style>
