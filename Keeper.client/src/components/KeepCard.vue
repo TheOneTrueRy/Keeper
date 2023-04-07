@@ -61,6 +61,7 @@ export default {
 
 .text-shadow {
   text-shadow: 1px 1px 0 black;
+  color: white;
 }
 
 .bing {
