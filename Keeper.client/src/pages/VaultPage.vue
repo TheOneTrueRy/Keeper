@@ -1,7 +1,7 @@
 <template>
-  <div v-if="vault" class="container-fluid">
+  <div v-if="vault" class="container-fluid pb-5">
     <div class="row">
-      <div class="col-6 offset-3 p-2">
+      <div class="col-10 offset-1 col-md-6 offset-md-3 p-2">
         <div class="rounded vault-bg d-flex align-items-center justify-content-end flex-column pb-2 text-light"
           :style="{ backgroundImage: `url(${vault.img})` }">
           <span class="vault-title text-shadow fw-bold">{{ vault.name }}</span>
@@ -10,7 +10,7 @@
       </div>
     </div>
     <div v-if="account.id == vault.creator.id" class="row">
-      <div class="col-6 offset-3 px-2">
+      <div class="col-8 offset-2 col-md-6 offset-md-3 px-2">
         <div class="w-100 d-flex align-items-center justify-content-between">
           <button v-if="vault.isPrivate" class="btn btn-dark" @click="changePrivacy()">
             <span>Make Public <i class="mdi mdi-lock-open"></i></span>
@@ -29,12 +29,12 @@
         <span class="bg-primary px-2 py-1 rounded-pill fs-5">{{ keeps.length }} Keeps</span>
       </div>
     </div>
-    <div class="row mt-3">
-      <div class="col-8 offset-2">
+    <div class="row mt-3 mb-5">
+      <div class="col-12 col-md-8 offset-md-2">
         <div class="bricks">
           <div v-for="k in keeps">
             <KeepCard :keep="k">
-              <button v-if="vault.creator.id == account.id" class="btn btn-danger move-over"
+              <button v-if="vault.creator.id == account.id" class="btn btn-danger move-over py-1 px-1"
                 title="Remove this keep from this vault." @click="removeKeep(k.vaultKeepId)">
                 <span><i class="mdi mdi-delete"></i></span>
               </button>
@@ -160,9 +160,9 @@ export default {
       margin-bottom: 1em;
     }
   }
-}
 
-.move-over {
-  margin-right: 9em;
+  .move-over {
+    margin-right: 35%;
+  }
 }
 </style>

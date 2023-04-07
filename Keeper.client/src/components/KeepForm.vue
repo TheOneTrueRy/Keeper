@@ -10,7 +10,7 @@
         <div class="row px-2 pb-2">
           <div class="col-12 py-1 g-0">
             <input required v-model="editable.name" type="text" placeholder="Title..." class="form-control"
-              maxlength="50">
+              maxlength="16">
           </div>
           <div class="col-12 py-1 g-0">
             <input required v-model="editable.img" type="url" placeholder="Image URL..." class="form-control">

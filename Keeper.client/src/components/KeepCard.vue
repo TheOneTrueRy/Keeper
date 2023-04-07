@@ -71,6 +71,12 @@ export default {
 .bong {
   position: absolute;
   transform: translateY(-46px);
-  width: 23vw;
+  width: 40vw;
+}
+
+@media screen and (min-width: 768px) {
+  .bong {
+    width: 20vw;
+  }
 }
 </style>
