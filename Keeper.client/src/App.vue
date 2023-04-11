@@ -21,8 +21,8 @@
             </ul>
           </div>
         </div>
-        <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1">
-          <img src="keep-icon.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
+        <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1 g-0">
+          <img src="Keeper-full-logo.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
         </div>
         <div class="col-2 col-md-3 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
           <button v-if="theme == 'light'" class="btn p-0 text-dark" @click="darkMode()"
@@ -98,7 +98,7 @@ export default {
 
 .logo {
   height: 50px;
-  width: 50px;
+  max-width: 100%;
 }
 
 .smooth {

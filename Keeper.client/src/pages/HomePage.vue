@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid mb-5">
+  <div class="container-fluid mb-5 mt-2">
     <div class="bricks pb-5">
       <div v-for="k in keeps" class="">
         <KeepCard :keep="k">
