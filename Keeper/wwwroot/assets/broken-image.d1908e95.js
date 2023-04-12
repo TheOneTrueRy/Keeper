@@ -1,0 +1,1 @@
+import{j as a,A as t}from"./index.be8692c0.js";class i{async getProfile(s){const e=await a.get("api/profiles/"+s);t.profile=e.data}async getUsersKeeps(s){const e=await a.get(`api/profiles/${s}/keeps`);t.keeps=e.data}async getUsersVaults(s){const e=await a.get(`api/profiles/${s}/vaults`);t.vaults=e.data}}const o=new i,c="/assets/broken-image.89281d09.png";export{c as _,o as p};
