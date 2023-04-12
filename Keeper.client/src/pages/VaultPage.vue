@@ -32,7 +32,7 @@
     <div class="row mt-3 mb-5">
       <div class="col-12 col-md-8 offset-md-2">
         <div class="bricks">
-          <div v-for="k in keeps">
+          <div v-for="k in keeps" class="rounded hover-card">
             <KeepCard :keep="k">
               <button v-if="vault.creator.id == account.id" class="btn btn-danger move-over py-1 px-1"
                 title="Remove this keep from this vault." @click="removeKeep(k.vaultKeepId)">
@@ -127,8 +127,16 @@ export default {
 
 
 <style lang="scss" scoped>
+.hover-card {
+  transition: 0.5s;
+}
+
+.hover-card:hover {
+  box-shadow: 0px 0px 10px rgb(157, 9, 226);
+}
+
 .vault-bg {
-  height: 25vh;
+  height: 30vh;
   width: 100%;
   background-position: center;
   background-size: cover;
@@ -145,7 +153,7 @@ export default {
 }
 
 .bricks {
-  columns: 2;
+  columns: 40vw;
 
   &>div {
     margin-bottom: 2em;
@@ -154,15 +162,11 @@ export default {
 
 @media screen and (min-width: 768px) {
   .bricks {
-    columns: 4;
+    columns: 20vw;
 
     &>div {
       margin-bottom: 1em;
     }
-  }
-
-  .move-over {
-    margin-right: 35%;
   }
 }
 </style>

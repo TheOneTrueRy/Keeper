@@ -1,18 +1,18 @@
 <template>
-  <header class="sticky-md-top fixed-bottom smooth" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
+  <header class="sticky-md-top fixed-bottom smooth bg-info">
     <div class="container-fluid elevation-3">
       <div class="row">
         <div class="col-md-2 col-3 d-flex align-items-center justify-content-center">
           <router-link :to="{ name: 'Home' }">
-            <button class="btn btn-dark">
+            <button class="btn btn-light">
               <span>Home <i class="mdi mdi-home d-none d-md-inline"></i></span>
             </button>
           </router-link>
         </div>
         <div class="col-md-3 col-3 d-flex align-items-center justify-content-center">
           <div class="dropdown" v-if="account.id">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-              data-bs-toggle="dropdown" aria-expanded="false">
+            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+              aria-expanded="false">
               Create
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
@@ -25,7 +25,7 @@
           <img src="Keeper-full-logo.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
         </div>
         <div class="col-2 col-md-3 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
-          <button v-if="theme == 'light'" class="btn p-0 text-dark" @click="darkMode()"
+          <button v-if="theme == 'light'" class="btn p-0 text-light" @click="darkMode()"
             title="Toggle the color theme of the site."><i class="mdi mdi-moon-waning-crescent fs-1"></i></button>
           <button v-else class="btn p-0 text-light" @click="lightMode()" title="Toggle the color theme of the site."><i
               class="mdi mdi-white-balance-sunny fs-1"></i></button>
@@ -36,7 +36,7 @@
       </div>
     </div>
   </header>
-  <main class="smooth" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
+  <main class="smooth bg-gradient" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
     <router-view />
   </main>
 

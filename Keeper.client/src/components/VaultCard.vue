@@ -1,11 +1,11 @@
 <template>
   <div class="border border-1 rounded elevation-2" :class="[theme == 'light' ? 'border-dark' : 'border-light']">
     <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }">
-      <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded img-fluid selectable bing"
+      <img :src="vault.img" :alt="vault.name" :title="vault.name" class="rounded w-100 selectable bing"
         onerror="this.src='broken-image.png'" @click="setVault(vault.id)">
     </router-link>
-    <div class="d-flex justify-content-start align-items-center p-1 bong clip-text">
-      <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }" class="hover text-light">
+    <div class="d-flex justify-content-start align-items-center p-1 bong">
+      <router-link :to="{ name: 'Vault', params: { vaultId: vault.id } }" class="hover text-light w-75 clip-text">
         <span class="fs-4 text-shadow" @click="setVault(vault.id)">{{ vault.name
         }}</span>
       </router-link>
@@ -58,12 +58,12 @@ export default {
 .bong {
   position: absolute;
   transform: translateY(-46px);
-  width: 40vw;
+  width: 43vw;
 }
 
 @media screen and (min-width: 768px) {
   .bong {
-    width: 20vw;
+    width: 23vw;
   }
 }
 

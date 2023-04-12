@@ -19,7 +19,7 @@
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <div class="bricks">
-          <div v-for="v in vaults">
+          <div v-for="v in vaults" class="rounded hover-card">
             <VaultCard :vault="v" />
           </div>
         </div>
@@ -29,7 +29,7 @@
       </div>
       <div class="col-12 col-md-8 offset-md-2 mb-5">
         <div class="bricks">
-          <div v-for="k in keeps">
+          <div v-for="k in keeps" class="rounded hover-card">
             <KeepCard :keep="k" />
           </div>
         </div>
@@ -97,6 +97,14 @@ export default {
 
 
 <style lang="scss" scoped>
+.hover-card {
+  transition: 0.5s;
+}
+
+.hover-card:hover {
+  box-shadow: 0px 0px 10px rgb(157, 9, 226);
+}
+
 .cover-image {
   height: 30vh;
   width: 100%;
@@ -114,7 +122,7 @@ export default {
 }
 
 .bricks {
-  columns: 2;
+  columns: 40vw;
 
   &>div {
     margin-bottom: 2em;
@@ -123,7 +131,7 @@ export default {
 
 @media screen and (min-width: 768px) {
   .bricks {
-    columns: 4;
+    columns: 20vw;
 
     &>div {
       margin-bottom: 1em;

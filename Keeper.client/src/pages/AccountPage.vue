@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 p-3">
         <img v-if="profile.coverImage" :src="profile.coverImage" :alt="`${profile.name}'s cover image.'`"
-          :title="`${profile.name}'s cover image.'`" class="cover-image rounded border border-dark">
+          :title="`${profile.name}'s cover image.`" class="cover-image rounded border border-dark">
         <img v-else src="Public\broken-image.png" alt="" class="cover-image rounded border border-dark">
       </div>
       <div class="col-4 offset-4 d-flex flex-column align-items-center justify-content-center translate-up">
@@ -25,7 +25,7 @@
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <div class="bricks">
-          <div v-for="v in vaults">
+          <div v-for="v in vaults" class="rounded hover-card">
             <VaultCard :vault="v" />
           </div>
         </div>
@@ -35,7 +35,7 @@
       </div>
       <div class="col-12 col-md-8 offset-md-2 mb-5">
         <div class="bricks">
-          <div v-for="k in keeps">
+          <div v-for="k in keeps" class="rounded hover-card">
             <KeepCard :keep="k" />
           </div>
         </div>
@@ -95,6 +95,14 @@ export default {
 
 
 <style lang="scss" scoped>
+.hover-card {
+  transition: 0.5s;
+}
+
+.hover-card:hover {
+  box-shadow: 0px 0px 10px rgb(157, 9, 226);
+}
+
 .cover-image {
   height: 30vh;
   width: 100%;
@@ -112,7 +120,7 @@ export default {
 }
 
 .bricks {
-  columns: 2;
+  columns: 40vw;
 
   &>div {
     margin-bottom: 2em;
@@ -121,7 +129,7 @@ export default {
 
 @media screen and (min-width: 768px) {
   .bricks {
-    columns: 4;
+    columns: 20vw;
 
     &>div {
       margin-bottom: 1em;

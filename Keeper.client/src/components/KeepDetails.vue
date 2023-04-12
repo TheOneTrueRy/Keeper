@@ -13,11 +13,11 @@
           </button>
         </div>
       </div>
-      <div class="col-12 col-md-6 h-100 d-flex bg-white">
+      <div class="col-12 col-md-6 h-100 d-flex bg-gradient" :class="[theme == 'light' ? 'bg-white' : 'bg-dark']">
         <div class="row h-100">
           <div class="col-12 d-flex justify-content-center align-items-center py-2">
-            <span><i class="mdi mdi-eye"></i> {{ keep.views }}</span>
-            <span class="ms-3"><i class="mdi mdi-chess-rook"></i> {{ keep.kept }}</span>
+            <span class=""><i class="mdi text-info mdi-eye"></i> {{ keep.views }}</span>
+            <span class="ms-3 "><i class="mdi text-info mdi-chess-rook"></i> {{ keep.kept }}</span>
           </div>
           <div class="col-12 d-flex flex-column justify-content-center keep-body">
             <span class="fs-2 text-center">{{ keep.name }}</span>
@@ -25,8 +25,8 @@
           </div>
           <div class="col-6 d-flex justify-content-between align-items-center">
             <div class="btn-group" v-if="account.id">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+                :class="[theme == 'light' ? 'btn-dark' : 'btn-light']">
                 VAULTS
               </button>
               <ul v-if="myVaults.length > 0" class="dropdown-menu">
@@ -74,6 +74,7 @@ export default {
       keep: computed(() => AppState.keep),
       myVaults: computed(() => AppState.myVaults),
       account: computed(() => AppState.account),
+      theme: computed(() => AppState.theme),
       async vaultAKeep(vaultId, keepId) {
         try {
           await vaultKeepsService.vaultAKeep(vaultId, keepId)
@@ -100,8 +101,7 @@ export default {
 
 <style lang="scss" scoped>
 .blur {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
 }
 
 .stop-rounding {

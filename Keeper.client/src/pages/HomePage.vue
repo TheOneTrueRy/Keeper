@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid mb-5 mt-2">
     <div class="bricks pb-5">
-      <div v-for="k in keeps" class="">
+      <div v-for="k in keeps" class="hover-card rounded">
         <KeepCard :keep="k">
           <router-link :to="{ name: 'Profile', params: { profileId: k.creator.id } }" v-if="k.creator">
             <img :src="k.creator.picture" :alt="k.creator.name" :title="k.creator.name"
@@ -47,8 +47,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.hover-card {
+  transition: 0.5s;
+}
+
+.hover-card:hover {
+  box-shadow: 0px 0px 10px rgb(157, 9, 226);
+}
+
 .bricks {
-  columns: 2;
+  columns: 40vw;
 
   &>div {
     margin-bottom: 2em;
@@ -57,7 +65,7 @@ export default {
 
 @media screen and (min-width: 768px) {
   .bricks {
-    columns: 4;
+    columns: 20vw;
 
     &>div {
       margin-bottom: 1em;
