@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1 g-0">
-          <img src="C:\Users\Ry\source\codeworks\checkpoints\Keeper\Keeper.client\Public\KEEPER-full-logo.png" alt="Keeper Logo" title="Keeper Logo" class="logo">
+          <img src="/KEEPER-full-logo.png" class="logo">
         </div>
         <div class="col-2 col-md-3 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
           <button v-if="theme == 'light'" class="btn p-0 text-light" @click="darkMode()"
