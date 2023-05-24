@@ -42,7 +42,7 @@
               </ul>
             </div>
             <div>
-              <button class="btn btn-danger py-1 px-2" title="Delete this keep."
+              <button v-if="account.id == keep.creator.id" class="btn btn-danger py-1 px-2" title="Delete this keep."
                 @click="deleteKeep(keep.id)">Delete</button>
             </div>
           </div>
