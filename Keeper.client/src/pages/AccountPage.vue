@@ -15,13 +15,18 @@
         </div>
       </div>
       <div class="col-2">
-        <button class="btn btn-dark" title="Edit Your Account Details" data-bs-toggle="modal"
-          data-bs-target="#accountForm">
+        <button class="btn" title="Edit Your Account Details" data-bs-toggle="modal" data-bs-target="#accountForm"
+          :class="[theme == 'light' ? 'btn-dark' : 'btn-light']">
           <span><i class="mdi mdi-pencil"></i></span>
         </button>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <span class="fs-2 fw-bold">Vaults</span>
+      </div>
+      <div v-if="vaults.length == 0" class="col-12 col-md-8 offset-md-2 text-center mb-5">
+        <span class="fs-3">
+          No Vaults Yet
+        </span>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <div class="bricks">
@@ -32,6 +37,11 @@
       </div>
       <div class="col-12 col-md-8 offset-md-2">
         <span class="fs-2 fw-bold">Keeps</span>
+      </div>
+      <div v-if="keeps.length == 0" class="col-12 col-md-8 offset-md-2 text-center">
+        <span class="fs-3">
+          No Keeps Yet
+        </span>
       </div>
       <div class="col-12 col-md-8 offset-md-2 mb-5">
         <div class="bricks">
@@ -86,7 +96,8 @@ export default {
     return {
       profile: computed(() => AppState.account),
       keeps: computed(() => AppState.keeps),
-      vaults: computed(() => AppState.myVaults)
+      vaults: computed(() => AppState.myVaults),
+      theme: computed(() => AppState.theme)
     };
   },
   components: { KeepCard, VaultCard, Modal }
