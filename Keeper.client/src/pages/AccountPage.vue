@@ -115,7 +115,7 @@ export default {
 }
 
 .cover-image {
-  height: 30vh;
+  height: 35vh;
   width: 100%;
   object-fit: cover;
 }
