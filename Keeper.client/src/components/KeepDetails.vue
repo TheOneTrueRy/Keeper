@@ -86,8 +86,9 @@ export default {
       async deleteKeep(keepId) {
         try {
           if (await Pop.confirm('Are you sure you want to PERMANENTLY delete your keep?')) {
-            await keepsService.deleteKeep(keepId)
-            Pop.success('Your keep was successfully deleted.')
+            await keepsService.deleteKeep(keepId);
+            Pop.success('Your keep was successfully deleted.');
+
           }
         } catch (error) {
           Pop.error(error.message, '[Deleting Keep]')
