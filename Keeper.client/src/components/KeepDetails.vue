@@ -67,6 +67,7 @@ import { AppState } from "../AppState.js";
 import Pop from "../utils/Pop.js";
 import { vaultKeepsService } from "../services/VaultKeepsService.js";
 import { keepsService } from "../services/KeepsService.js";
+import { Modal } from "bootstrap";
 
 export default {
   setup() {
@@ -87,8 +88,8 @@ export default {
         try {
           if (await Pop.confirm('Are you sure you want to PERMANENTLY delete your keep?')) {
             await keepsService.deleteKeep(keepId);
+            Modal.getOrCreateInstance('#keepDetails').hide();
             Pop.success('Your keep was successfully deleted.');
-
           }
         } catch (error) {
           Pop.error(error.message, '[Deleting Keep]')
