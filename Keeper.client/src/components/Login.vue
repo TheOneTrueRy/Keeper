@@ -6,9 +6,8 @@
     <div v-else>
       <div class="dropdown dropstart my-2 my-lg-0">
         <div type="button" class="no-select" data-bs-toggle="dropdown" aria-expanded="false">
-          <div v-if="account.picture || user.picture">
-            <img :src="account.picture || user.picture" alt="account photo" height="50" width="50"
-              class="rounded-circle border border-1 border-dark selectable" title="Visit your Account Page or logout." />
+          <div class="rounded-circle border border-1 border-dark selectable fifty cover-center"
+            :style="{ backgroundImage: `url(${account.picture})` }" v-if="account.picture || user.picture">
           </div>
         </div>
         <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown">
@@ -25,6 +24,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </span>
 </template>
@@ -49,4 +49,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.fifty {
+  height: 50px;
+  width: 50px;
+}
+</style>

@@ -4,9 +4,11 @@
       <div v-for="k in keeps" class="hover-card rounded">
         <KeepCard :keep="k">
           <router-link :to="{ name: 'Profile', params: { profileId: k.creator.id } }" v-if="k.creator">
-            <img :src="k.creator.picture" :alt="k.creator.name" :title="k.creator.name"
-              class="creator-pfp border elevation-1" onerror="this.src='broken-image.png'"
+            <div :style="{ backgroundImage: `url(${k.creator.picture})` }" :alt="k.creator.name" :title="k.creator.name"
+              class="creator-pfp border border-dark elevation-1 cover-center"
+              onerror="this.backgroundImage='broken-image.png'"
               :class="[theme == 'light' ? 'border-dark' : 'border-light']">
+            </div>
           </router-link>
         </KeepCard>
       </div>

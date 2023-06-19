@@ -5,7 +5,9 @@
         <div class="rounded vault-bg d-flex align-items-center justify-content-end flex-column pb-2 text-light"
           :style="{ backgroundImage: `url(${vault.img})` }">
           <span class="vault-title text-shadow fw-bold">{{ vault.name }}</span>
-          <span class="text-shadow fs-5">by {{ vault.creator.name }}</span>
+          <router-link :to="{ name: 'Profile', params: { profileId: vault.creator.id } }">
+            <span class="text-shadow fs-5">by {{ vault.creator.name }}</span>
+          </router-link>
         </div>
       </div>
     </div>
@@ -26,7 +28,9 @@
     </div>
     <div class="row">
       <div class="col-6 offset-3 px-2 mt-1 d-flex justify-content-center align-items-center">
-        <span class="bg-primary px-2 py-1 rounded-pill fs-5">{{ keeps.length }} Keeps</span>
+        <span v-if="keeps.length > 1" class="bg-info px-2 py-1 rounded-pill fs-5">{{ keeps.length }} Keeps</span>
+        <span v-if="keeps.length == 1" class="bg-info px-2 py-1 rounded-pill fs-5">{{ keeps.length }} Keep</span>
+        <span v-if="keeps.length < 1" class="bg-info px-2 py-1 rounded-pill fs-5">No Keeps Yet!</span>
       </div>
     </div>
     <div class="row mt-3 mb-5">
@@ -85,6 +89,7 @@ export default {
     });
     onUnmounted(() => {
       AppState.keeps = []
+      AppState.vault = null
     })
     return {
       vault: computed(() => AppState.vault),

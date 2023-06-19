@@ -22,12 +22,16 @@
           </div>
         </div>
         <div class="col-2 d-none d-md-flex align-items-center justify-content-center py-1 g-0">
-          <img src="/KEEPER-full-logo.png" class="logo">
+          <router-link :to="{ name: 'Home' }" title="Go to the Homepage!">
+            <img src="/KEEPER-full-logo.png" class="logo">
+          </router-link>
         </div>
         <div class="col-2 col-md-3 offset-1 offset-md-0 d-flex align-items-center justify-content-center">
           <button v-if="theme == 'light'" class="btn p-0 text-light" @click="darkMode()"
-            title="Toggle the color theme of the site."><i class="mdi mdi-moon-waning-crescent fs-1"></i></button>
-          <button v-else class="btn p-0 text-light" @click="lightMode()" title="Toggle the color theme of the site."><i
+            title="Toggle the color theme of the site to dark-mode."><i
+              class="mdi mdi-moon-waning-crescent fs-1"></i></button>
+          <button v-else class="btn p-0 text-light" @click="lightMode()"
+            title="Toggle the color theme of the site to light-mode."><i
               class="mdi mdi-white-balance-sunny fs-1"></i></button>
         </div>
         <div class="col-md-2 col-3 d-flex align-items-center justify-content-center">
