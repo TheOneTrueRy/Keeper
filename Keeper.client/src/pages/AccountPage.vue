@@ -4,9 +4,9 @@
       <div class="col-12 col-md-8 offset-md-2 p-3">
         <img v-if="profile.coverImage" :src="profile.coverImage" :alt="`${profile.name}'s cover image.'`"
           :title="`${profile.name}'s cover image.`" class="cover-image rounded border border-dark">
-        <img v-else src="/broken-image.png" alt="" class="cover-image rounded border border-dark">
       </div>
-      <div class="col-4 offset-4 d-flex flex-column align-items-center justify-content-center translate-up">
+      <div class="col-4 offset-4 d-flex flex-column align-items-center justify-content-center"
+        :class="profile.coverImage ? 'translate-up' : ''">
         <div :style="{ backgroundImage: `url(${profile.picture})` }" :alt="profile.name"
           :title="`${profile.name}'s profile picture.'`"
           class="profile-picture border border-dark elevation-1 cover-center">

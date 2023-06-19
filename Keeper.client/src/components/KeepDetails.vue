@@ -25,8 +25,8 @@
           </div>
           <div class="col-6 d-flex justify-content-between align-items-center">
             <div class="btn-group" v-if="account.id">
-              <button class="btn btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
-                :class="[theme == 'light' ? 'btn-dark' : 'btn-light']">
+              <button v-if="myVaults.length > 0" class="btn btn-sm dropdown-toggle" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false" :class="[theme == 'light' ? 'btn-dark' : 'btn-light']">
                 VAULTS
               </button>
               <ul v-if="myVaults.length > 0" class="dropdown-menu">
@@ -37,7 +37,7 @@
                   </span>
                 </li>
               </ul>
-              <ul v-else>
+              <ul v-else class="mb-0">
                 <li><span>No Vaults Created!</span></li>
               </ul>
             </div>

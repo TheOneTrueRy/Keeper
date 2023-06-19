@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" :class="[theme == 'light' ? 'bg-light' : 'bg-dark']">
+  <div class="container-fluid rounded bg-gradient" :class="[theme == 'light' ? 'bg-light' : 'bg-dark']">
     <div class="row p-2">
       <div class="col-12 d-flex justify-content-between align-items-center">
         <span class="fs-1">Add Your Keep</span>
@@ -23,7 +23,7 @@
             <button class="btn btn-dark" type="button" data-bs-dismiss="modal" data-bs-target="#keepForm">
               <span>Cancel</span>
             </button>
-            <button class="btn btn-success" type="submit" data-bs-dismiss="modal" data-bs-target="#keepForm">
+            <button class="btn bg-info" type="submit" data-bs-dismiss="modal" data-bs-target="#keepForm">
               <span>Submit</span>
             </button>
           </div>
@@ -39,6 +39,7 @@ import { computed, ref } from "vue";
 import { keepsService } from "../services/KeepsService.js";
 import Pop from "../utils/Pop.js";
 import { AppState } from "../AppState.js";
+import { logger } from "../utils/Logger.js";
 
 export default {
   setup() {
