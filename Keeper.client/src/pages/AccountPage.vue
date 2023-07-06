@@ -3,7 +3,8 @@
     <div class="row">
       <div class="col-12 col-md-8 offset-md-2 p-3">
         <img v-if="profile.coverImage" :src="profile.coverImage" :alt="`${profile.name}'s cover image.'`"
-          :title="`${profile.name}'s cover image.`" class="cover-image rounded border border-dark">
+          :title="`${profile.name}'s cover image.`" class="cover-image rounded border border-dark"
+          onerror="this.src='broken-image.png'">
       </div>
       <div class="col-4 offset-4 d-flex flex-column align-items-center justify-content-center"
         :class="profile.coverImage ? 'translate-up' : ''">

@@ -1,0 +1,1 @@
+import{j as a,A as t}from"./index.68cd7d71.js";class i{async getProfile(e){const s=await a.get("api/profiles/"+e);t.profile=s.data}async getUsersKeeps(e){const s=await a.get(`api/profiles/${e}/keeps`);t.keeps=s.data}async getUsersVaults(e){const s=await a.get(`api/profiles/${e}/vaults`);t.vaults=s.data}}const o=new i;export{o as p};
