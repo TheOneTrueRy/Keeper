@@ -29,8 +29,8 @@
                 data-bs-toggle="dropdown" aria-expanded="false" :class="[theme == 'light' ? 'btn-dark' : 'btn-light']">
                 VAULTS
               </button>
-              <ul v-if="myVaults.length > 0" class="dropdown-menu">
-                <li v-for="v in myVaults" class="selectable" @click="vaultAKeep(v.id, keep.id)"
+              <ul v-if="myVaults.length > 0" class="dropdown-menu py-0">
+                <li v-for="v in myVaults" class="selectable px-1" @click="vaultAKeep(v.id, keep.id)"
                   :title="`Add this keep to your ${v.name} vault!`">
                   <span>
                     {{ v.name }}
