@@ -15,7 +15,7 @@
               aria-expanded="false">
               Create
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuButton1">
               <li class="selectable p-1" data-bs-toggle="modal" data-bs-target="#keepForm">New Keep</li>
               <li class="selectable p-1" data-bs-toggle="modal" data-bs-target="#vaultForm">New Vault</li>
             </ul>
