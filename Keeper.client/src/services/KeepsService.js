@@ -17,6 +17,8 @@ class KeepsService {
 
   async createKeep(keepData) {
     const res = await api.post('api/keeps', keepData)
+    keepData = res.data
+    keepData.creator = AppState.account
     AppState.keeps.unshift(res.data)
   }
 
