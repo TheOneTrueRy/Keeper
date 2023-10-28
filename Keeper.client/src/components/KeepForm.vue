@@ -39,7 +39,7 @@ import { computed, ref } from "vue";
 import { keepsService } from "../services/KeepsService.js";
 import Pop from "../utils/Pop.js";
 import { AppState } from "../AppState.js";
-import { logger } from "../utils/Logger.js";
+import { router } from "../router.js";
 
 export default {
   setup() {
@@ -52,6 +52,7 @@ export default {
           await keepsService.createKeep(keepData)
           editable.value = {}
           Pop.success('Keep successfully created!')
+          router.push({ name: 'Home' })
         } catch (error) {
           Pop.error(error.message, '[Creating Keep]')
         }
