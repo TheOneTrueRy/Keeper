@@ -20,16 +20,22 @@
         <span class="fs-1 fw-bold">Vaults</span>
       </div>
       <div class="col-12 col-md-8 offset-md-2">
+        <i v-if="vaults.length == 0" class="fs-4">
+          {{ profile.name }} currently has no vaults.
+        </i>
         <div class="bricks">
           <div v-for="v in vaults" class="rounded hover-card">
             <VaultCard :vault="v" />
           </div>
         </div>
       </div>
-      <div class="col-12 col-md-8 offset-md-2 mb-1">
+      <div class="col-12 col-md-8 offset-md-2 mb-1 mt-4">
         <span class="fs-1 fw-bold">Keeps</span>
       </div>
       <div class="col-12 col-md-8 offset-md-2 mb-5">
+        <i v-if="keeps.length == 0" class="fs-5">
+          {{ profile.name }} currently has no keeps.
+        </i>
         <div class="bricks">
           <div v-for="k in keeps" class="rounded hover-card">
             <KeepCard :keep="k" />

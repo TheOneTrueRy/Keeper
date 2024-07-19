@@ -14,10 +14,11 @@
     <div v-if="account.id == vault.creator.id" class="row">
       <div class="col-8 offset-2 col-md-6 offset-md-3 px-2">
         <div class="w-100 d-flex align-items-center justify-content-between">
-          <button v-if="vault.isPrivate" class="btn btn-dark" @click="changePrivacy()">
+          <button v-if="vault.isPrivate" class="btn" :class="theme == 'light' ? 'btn-dark' : 'btn-light'"
+            @click="changePrivacy()">
             <span>Make Public <i class="mdi mdi-lock-open"></i></span>
           </button>
-          <button v-else class="btn btn-dark" @click="changePrivacy()">
+          <button v-else class="btn" :class="theme == 'light' ? 'btn-dark' : 'btn-light'" @click="changePrivacy()">
             <span>Make Private <i class="mdi mdi-lock"></i></span>
           </button>
           <button class="btn btn-danger" @click="deleteVault(vault.id)">
@@ -28,9 +29,9 @@
     </div>
     <div class="row">
       <div class="col-6 offset-3 px-2 mt-1 d-flex justify-content-center align-items-center">
-        <span v-if="keeps.length > 1" class="bg-info px-2 py-1 rounded-pill fs-5">{{ keeps.length }} Keeps</span>
-        <span v-if="keeps.length == 1" class="bg-info px-2 py-1 rounded-pill fs-5">{{ keeps.length }} Keep</span>
-        <span v-if="keeps.length < 1" class="bg-info px-2 py-1 rounded-pill fs-5">No Keeps Yet!</span>
+        <span v-if="keeps.length > 1" class="bg-info px-3 py-1 rounded-pill fs-5">{{ keeps.length }} Keeps</span>
+        <span v-if="keeps.length == 1" class="bg-info px-3 py-1 rounded-pill fs-5">{{ keeps.length }} Keep</span>
+        <span v-if="keeps.length < 1" class="bg-info px-3 py-1 rounded-pill fs-5">No Keeps Yet!</span>
       </div>
     </div>
     <div class="row mt-3 mb-5">
@@ -95,6 +96,7 @@ export default {
       vault: computed(() => AppState.vault),
       account: computed(() => AppState.account),
       keeps: computed(() => AppState.keeps),
+      theme: computed(() => AppState.theme),
       async deleteVault(vaultId) {
         try {
           if (await Pop.confirm('Are you sure you want to PERMANENTLY delete this vault?')) {
